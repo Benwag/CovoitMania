@@ -26,7 +26,12 @@ function initialiser() {
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var carte = new google.maps.Map(document.getElementById("carte"), options);
-	//var users = ${users};
+	
+	var usersFields = {
+		    <c:forEach var="user" items="${users}">
+		    '${user.key}': '${user.value}',
+		    </c:forEach>
+		};
 	
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(48.578480, 7.751519),
@@ -46,7 +51,7 @@ function initialiser() {
 		infoWindow.open(carte, marker);
 	});
 
-for (var user in "${users}") {
+for (var user in usersFields) {
 		
 		var latlng = new google.maps.LatLng(user.value.getCoord()[0], user.value.getCoord()[1]);
 		

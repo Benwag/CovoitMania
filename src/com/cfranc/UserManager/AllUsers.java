@@ -39,7 +39,8 @@ public class AllUsers extends HttpServlet {
     	bobby.setAge(36);
     	bobby.setEmail("robert@johnson.name");
     	bobby.setPassword("mdp");
-    	bobby.setAddress("5 rue des bouchers");
+    	bobby.setAddress("45 rue des bouchers");
+    	bobby.setPostCode(67000);
     	bobby.setCity("Strasbourg");
     	bobby.setCoord(ConvertAdressCoord.getCoordFromAdress(bobby.getAddress()+" "+bobby.getCity()));
     	users.put(bobby.getId(), bobby);
@@ -51,7 +52,8 @@ public class AllUsers extends HttpServlet {
     	johnny.setAge(42);
     	johnny.setEmail("johnny@johnson.name");
     	johnny.setPassword("mdp");
-    	johnny.setAddress("5 rue des bouchers");
+    	johnny.setAddress("30 rue des bouchers");
+    	bobby.setPostCode(67000);
     	johnny.setCity("Strasbourg");
     	johnny.setCoord(ConvertAdressCoord.getCoordFromAdress(johnny.getAddress()+" "+johnny.getCity()));
     	
@@ -64,7 +66,8 @@ public class AllUsers extends HttpServlet {
     	steve.setAge(47);
     	steve.setEmail("steve@johnson.name");
     	steve.setPassword("mdp");
-    	steve.setAddress("5 rue des bouchers");
+    	steve.setAddress("20 rue des bouchers");
+    	bobby.setPostCode(67000);
     	steve.setCity("Strasbourg");
     	steve.setCoord(ConvertAdressCoord.getCoordFromAdress(steve.getAddress()+" "+steve.getCity()));
     	
@@ -77,7 +80,8 @@ public class AllUsers extends HttpServlet {
     	bill.setAge(59);
     	bill.setEmail("bill@johnson.name");
     	bill.setPassword("mdp");
-    	bill.setAddress("5 rue des bouchers");
+    	bill.setAddress("40 rue des bouchers");
+    	bobby.setPostCode(67000);
     	bill.setCity("Strasbourg");
     	bill.setCoord(ConvertAdressCoord.getCoordFromAdress(bill.getAddress()+" "+bill.getCity()));
     

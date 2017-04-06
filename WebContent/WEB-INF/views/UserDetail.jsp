@@ -24,7 +24,7 @@
 			<li class="list-group-item">Age : ${user.getAge()}</li>
 			<li class="list-group-item">Email : ${user.getEmail()}</li> 
 			<li class="list-group-item">Adresse: ${user.getAddress()}</li>
-			<li class="list-group-item">Code postal: ${user.getPostalCode()}</li>
+			<li class="list-group-item">Code postal: ${user.getPostCode()}</li>
 			<li class="list-group-item">Ville: ${user.getCity()}</li>
 		</ul>
 		</div>

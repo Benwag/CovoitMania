@@ -46,7 +46,7 @@ function initialiser() {
 		infoWindow.open(carte, marker);
 	});
 
-for (var user in users) {
+for (var user in "${users}") {
 		
 		var latlng = new google.maps.LatLng(user.value.getCoord()[0], user.value.getCoord()[1]);
 		

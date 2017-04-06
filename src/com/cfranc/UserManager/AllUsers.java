@@ -29,7 +29,7 @@ public class AllUsers extends HttpServlet {
     public AllUsers() {
         super();
     }
-
+ 
 	private ListeUtilisateur getStaticUsers() {
 		ListeUtilisateur users = new ListeUtilisateur();
     	Utilisateur bobby = new Utilisateur();

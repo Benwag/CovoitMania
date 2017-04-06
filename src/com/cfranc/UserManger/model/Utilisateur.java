@@ -90,6 +90,6 @@ public class Utilisateur implements Serializable {
 	
 	@Override
 	public String toString(){
-		return this.getFirstname() + " " + this.getLastname() + " " + this.getAge() + " " + this.getEmail();
+		return this.getFirstname() + " " + this.getLastname() + " " + this.getAge() + " " + this.getEmail() + " " + this.getCoord();
 	}
 }

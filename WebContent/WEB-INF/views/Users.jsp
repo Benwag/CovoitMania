@@ -29,7 +29,7 @@ function initialiser() {
 	
 	var usersFields = {
 		    <c:forEach var="user" items="${users}">
-		    '${user.key}': '${user.value}',
+		    '${user.value.getCoord()[0]}': '${user.value.getCoord()[1]}',
 		    </c:forEach>
 		};
 	
@@ -50,10 +50,10 @@ function initialiser() {
 	google.maps.event.addListener(marker, 'click', function() {
 		infoWindow.open(carte, marker);
 	});
-
+console.log(usersFields);
 for (var user in usersFields) {
 		
-		var latlng = new google.maps.LatLng(user.value.getCoord()[0], user.value.getCoord()[1]);
+		var latlng = new google.maps.LatLng(user, usersFields[user]);
 		
 		var userMarker = new google.maps.Marker({
 			position: latlng,

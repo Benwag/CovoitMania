@@ -21,7 +21,7 @@
 <p><label for="age">Age</label> <input type="text" class="form-control"  name="age" placeholder="age"></p>
 <p><label for="email">Email adress</label> <input type="email" class="form-control"  name="email" placeholder="email"></p>
 <p><label for="address">Adress</label> <input type="text" class="form-control"  name="address" placeholder="address"></p>
-<p><label for="PostalCode">Postal code</label> <input type="text" class="form-control"  name="postalcode" placeholder="Postal Code"></p>
+<p><label for="PostalCode">Postal code</label> <input type="text" class="form-control"  name="postalCode" placeholder="Postal Code"></p>
 <p><label for="city">City</label> <input type="text" class="form-control"  name="city" placeholder="City"></p>
 <p><label for="password">Mot de Passe</label> <input id="pass1" type="password" class="form-control"  name="password" placeholder="mot de passe"></p>
 <p><label for="password2">Repeter le Mot de Passe</label> <input id="pass2" type="password" class="form-control"  name="password2" placeholder=" repeter mot de passe"></p>

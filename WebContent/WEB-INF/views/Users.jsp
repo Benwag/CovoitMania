@@ -59,7 +59,7 @@ for (var user in usersFields) {
 		var userMarker = new google.maps.Marker({
 			position: latlng,
 			map: carte,
-			title: "JAVASBOURG",
+			title: "Utilisateur",
 			draggable: false
 		});
 		
@@ -72,23 +72,22 @@ for (var user in usersFields) {
 	<body onload="initialiser()">
 	
 	<c:import url="/WEB-INF/views/Menu.jsp" />
-	<h2>Utilisateurs</h2>
+	<h2>Localisation des utilisateurs</h2>
 	<div id="carte" style="width:100%; height: 75%"></div>
 	<div class="container">
-  <h2>Tableau</h2>
-  
-  
-  
+	
+	
+  <h2>Liste des utilisateurs</h2>
   <p>Voici la liste des ${users.size()} utilisateurs actuellement inscrits</p>            
   <table class="table">
     <thead>
       <tr>
         <th>Lastname</th>
         <th>Firstname</th>
-        <th>Email</th>
+        <!-- <th>Email</th> -->
         <th>Details</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <!-- <th>Edit</th>
+        <th>Delete</th> -->
       </tr>
     </thead>
     <tbody>
@@ -96,10 +95,10 @@ for (var user in usersFields) {
       <tr>
         <td>${user.value.getLastname()} </td>
         <td>${user.value.getFirstname()} </td>
-        <td>${user.value.getEmail()}
+        <%-- <td>${user.value.getEmail()}</td> --%>
         <td><a href="DetailUser?user=${user.key}">Details</a></td>
-        <td><a href="EditUser?user=${user.key}">Edit</a></td>
-        <td><a href="DeleteUser?user=${user.key}">Delete</a></td>        
+        <%-- <td><a href="EditUser?user=${user.key}">Edit</a></td>
+        <td><a href="DeleteUser?user=${user.key}">Delete</a></td> --%>        
       </tr>
     </c:forEach>
      
@@ -108,7 +107,7 @@ for (var user in usersFields) {
 </div>
 		<c:if test="${error != null}">${error}</c:if>
 		<c:if test="${sucess != null}">${sucess}</c:if>
-		
+ 		
 		
 		
 		

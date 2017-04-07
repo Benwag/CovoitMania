@@ -16,6 +16,7 @@ public class Utilisateur implements Serializable {
 	private String city;
 	private long Score;
 	private int PostCode;
+	
 	public int getPostCode() {
 		return PostCode;
 	}

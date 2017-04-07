@@ -67,6 +67,7 @@ public class AddUser extends HttpServlet {
 			String city = request.getParameter("city");
 			int postalCode = Integer.parseInt(request.getParameter("postalCode"));
 			
+			
 			Collection<Utilisateur> userList = users.values();
 			boolean isAdressGood = true;
 			for (Utilisateur utilisateur : userList) {
@@ -85,5 +86,6 @@ public class AddUser extends HttpServlet {
 			}
 		}
 	}
-
 }
+
+

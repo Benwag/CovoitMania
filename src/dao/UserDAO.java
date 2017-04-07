@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.Collection;
+
 import com.cfranc.UserManager.ConvertAdressCoord;
 import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
@@ -19,7 +21,8 @@ public class UserDAO {
 			bobby.setAge(36);
 			bobby.setEmail("robert@johnson.name");
 			bobby.setPassword("mdp");
-			bobby.setAddress("5 rue des bouchers");
+			bobby.setAddress("10 rue des bouchers");
+			bobby.setPostCode(67000);
 			bobby.setCity("Strasbourg");
 			bobby.setCoord(ConvertAdressCoord.getCoordFromAdress(bobby.getAddress() + " " + bobby.getCity()));
 			users.put(bobby.getId(), bobby);
@@ -31,7 +34,8 @@ public class UserDAO {
 			johnny.setAge(42);
 			johnny.setEmail("johnny@johnson.name");
 			johnny.setPassword("mdp");
-			johnny.setAddress("5 rue des bouchers");
+			johnny.setAddress("20 rue des bouchers");
+			johnny.setPostCode(67000);
 			johnny.setCity("Strasbourg");
 			johnny.setCoord(ConvertAdressCoord.getCoordFromAdress(johnny.getAddress() + " " + johnny.getCity()));
 
@@ -44,7 +48,8 @@ public class UserDAO {
 			steve.setAge(47);
 			steve.setEmail("steve@johnson.name");
 			steve.setPassword("mdp");
-			steve.setAddress("5 rue des bouchers");
+			steve.setAddress("30 rue des bouchers");
+			steve.setPostCode(67000);
 			steve.setCity("Strasbourg");
 			steve.setCoord(ConvertAdressCoord.getCoordFromAdress(steve.getAddress() + " " + steve.getCity()));
 
@@ -57,7 +62,8 @@ public class UserDAO {
 			bill.setAge(59);
 			bill.setEmail("bill@johnson.name");
 			bill.setPassword("mdp");
-			bill.setAddress("5 rue des bouchers");
+			bill.setAddress("35 rue des bouchers");
+			bill.setPostCode(67000);
 			bill.setCity("Strasbourg");
 			bill.setCoord(ConvertAdressCoord.getCoordFromAdress(bill.getAddress() + " " + bill.getCity()));
 
@@ -88,4 +94,21 @@ public class UserDAO {
 		return user;
 	}
 
+//	public static boolean isEmailNotUsed(String email){
+//		Collection<Utilisateur> userList = users.values();
+//		boolean isEmailGood = true;
+//		for (Utilisateur utilisateur : userList) {
+//
+//			if (email.equals(utilisateur.getEmail())) {
+//				isEmailGood = false;
+//				return isEmailGood;
+//				
+//			}
+//		} if (isEmailGood){
+//			return true;
+//		}
+//	}
+	
+	
+	
 }

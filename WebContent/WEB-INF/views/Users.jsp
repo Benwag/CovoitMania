@@ -50,7 +50,8 @@ function initialiser() {
 	google.maps.event.addListener(marker, 'click', function() {
 		infoWindow.open(carte, marker);
 	});
-console.log(usersFields);
+
+
 for (var user in usersFields) {
 		
 		var latlng = new google.maps.LatLng(user, usersFields[user]);

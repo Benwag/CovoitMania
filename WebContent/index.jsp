@@ -1,53 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!DOCTYPE html>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="WEB-INF/styles/style.css">
+<link rel="stylesheet" href='<c:url value="WEB-INF/css/custom.css" />' />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBBqYxzbViJA31VFQiVNXUqQHKfSbISNZY"></script>
-<script type="text/javascript">
-function initialiser() {
-	var latlng = new google.maps.LatLng(48.578480, 7.751519);
-	var options = {
-			center: latlng,
-			zoom: 16,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var carte = new google.maps.Map(document.getElementById("carte"), options);
-
-	var marker = new google.maps.Marker({
-		position: new google.maps.LatLng(48.578480, 7.751519),
-		map: carte,
-		title: "JAVASBOURG",
-		draggable: false
-	});
-	
-	var contentMarker = "JAVASBOURG";
-	
-	var infoWindow = new google.maps.InfoWindow({
-		content: contentMarker,
-		position: latlng
-	});
-	
-	google.maps.event.addListener(marker, 'click', function() {
-		infoWindow.open(carte, marker);
-	});
-
-}
-</script>
-<title>Users</title>
+<title>CovoitMania</title>
 </head>
-<body onload="initialiser()">
-<c:import url="/WEB-INF/views/Menu.jsp" />
-<h2>Home page for UserManager</h2>
-<p><a href="AllUsers">List of Users</a>
-<div id="carte" style="width:100%; height:75%"></div>
-<p><%= new java.util.Date() %></p>
+<body>
+<div class="container">
+	<c:import url="/WEB-INF/views/Menu.jsp" />
+</div>
+<div class="jumbotron">
+        <h1>Covoiturez malin!</h1>
+        <p class="lead">Avec CovoitMania, organisez et optimisez vos déplacements quotidiens jusqu'à votre lieu de travail en covoiturant avec vos collègues. Sélectionnez vos préférences: musique, blabla, fumeur, renseignez votre adresse et hop! CovoitMania vous trouve le covoiturage parfait! </p>
+        <p><a class="btn btn-lg btn-success" href="<c:url value="/AddUser"/>" role="button">S'inscrire</a></p>
+      </div>
+<div class="container">
+	<h1>CovoitMania</h1>
+	<h2>Voyagez malin jusqu'à votre lieu de travail!</h2>
+<p>CovoitMania, c'est le service qui vous permet d'organiser vos trajets quotidiens en covoiturage avec vos collègues.</a>
+
+	
+</div>
 
 </body>
 </html>

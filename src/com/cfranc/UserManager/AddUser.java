@@ -39,6 +39,12 @@ public class AddUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("users") == null){	
+			ListeUtilisateur users = UserDAO.getStaticUsers();
+			session.setAttribute("users", users);
+			System.out.println("Session users created");
+		}
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/UserAdd.jsp");
 		dispatch.forward(request, response);
 	}

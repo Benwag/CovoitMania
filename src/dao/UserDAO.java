@@ -86,13 +86,62 @@ public class UserDAO {
 		user.setEmail(email);
 		user.setAddress(address);
 		user.setCity(city);
-		user.setId(users.nextId());
 		user.setPassword(password);
 		user.setPostCode(postalCode);
 		user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
+		user.setId(users.nextId());
 		users.put(user.getId(), user);
 		return user;
 	}
+	
+	
+	public static Utilisateur editUser(long userId, String firstname, String lastname, 
+			 String ageString, String email, String address, String postalCodeString,String city){
+		Utilisateur user = users.get(userId);
+		
+		if (firstname != ""){
+			user.setFirstname(firstname);
+		}
+		if (lastname != ""){
+			user.setLastname(lastname);
+		}
+		if (ageString != ""){
+			int age = Integer.parseInt(ageString);
+			user.setAge(age);
+		}
+		if (email != ""){
+			user.setEmail(email);
+		}
+		if (address != ""){
+			user.setAddress(address);
+		}
+		if (postalCodeString != ""){
+			int postalCode = Integer.parseInt(postalCodeString);
+			user.setPostCode(postalCode);
+		}
+		if (city != ""){
+			user.setCity(city);
+		}
+		
+		if (address != "" || city != ""){
+			user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
+		}
+		
+		return user;
+		
+	}
+	
+	
+	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword){
+		Utilisateur user = users.get(userId);
+		
+			user.setPassword(newPassword);
+			return user;
+		
+	}
+	
+	
+	
 
 //	public static boolean isEmailNotUsed(String email){
 //		Collection<Utilisateur> userList = users.values();

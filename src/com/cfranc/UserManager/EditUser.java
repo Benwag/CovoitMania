@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cfranc.UserManger.model.Utilisateur;
-
+import dao.UserDAO;
 /**
  * Servlet implementation class EditUser
  */
@@ -50,13 +50,14 @@ public class EditUser extends HttpServlet {
 		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
-		int age = Integer.parseInt(request.getParameter("age"));
+		String age = request.getParameter("age");
 		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String postalCode = request.getParameter("postalCode");
+		String city = request.getParameter("city");
 		
-		user.setFirstname(firstname);
-		user.setLastname(lastname);
-		user.setAge(age);
-		user.setEmail(email);
+		long userId = user.getId();
+		UserDAO.editUser(userId, firstname, lastname, age, email, address, postalCode, city);
 		
 		response.sendRedirect("DetailUser?user=" + user.getId());
 	}

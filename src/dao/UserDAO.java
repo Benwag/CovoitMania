@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.Collection;
+
 import com.cfranc.UserManager.ConvertAdressCoord;
 import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
@@ -88,4 +90,21 @@ public class UserDAO {
 		return user;
 	}
 
+//	public static boolean isEmailNotUsed(String email){
+//		Collection<Utilisateur> userList = users.values();
+//		boolean isEmailGood = true;
+//		for (Utilisateur utilisateur : userList) {
+//
+//			if (email.equals(utilisateur.getEmail())) {
+//				isEmailGood = false;
+//				return isEmailGood;
+//				
+//			}
+//		} if (isEmailGood){
+//			return true;
+//		}
+//	}
+	
+	
+	
 }

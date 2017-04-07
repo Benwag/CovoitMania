@@ -12,19 +12,19 @@
 <c:import url="/WEB-INF/views/Menu.jsp" />
 <h2>Inscription</h2>
 <c:if test="${error != null}">${error}</c:if>
-<div class="container">
+<div class="jumbotron">
 <form action="AddUser" onsubmit="return myFunction()" method="post">
 <div class="form-group">
-<label for="firstname">Prénom:</label> <input type="text" class="form-control" name="firstname" placeholder="prénom"></div>
-<p><label for="lastname">Nom:</label> <input type="text"  class="form-control" name="lastname" placeholder="nom"></p>
-<p><label for="age">Age:</label> <input type="number" class="form-control"  name="age" placeholder="age"></p>
-<p><label for="email">Email:</label> <input type="email" class="form-control"  name="email" placeholder="email"></p>
-<p><label for="address">Adresse:</label> <input type="text" class="form-control"  name="address" placeholder="adresse"></p>
-<p><label for="PostalCode">Code postal:</label> <input type="number" class="form-control"  name="postalCode" placeholder="Code postal"></p>
-<p><label for="city">Ville:</label> <input type="text" class="form-control"  name="city" placeholder="Ville"></p>
-<p><label for="password">Mot de passe:</label> <input id="pass1" type="password" class="form-control"  name="password" placeholder="mot de passe"></p>
-<p><label for="password2">Saisir à nouveau le mot de passe:</label> <input id="pass2" type="password" class="form-control"  name="password2" placeholder="mot de passe"></p>
-<p><input type="submit" class="btn btn-default" value="S'inscrire"/></p>
+<p class="texte"><label for="firstname">Prénom:</label> <input type="text" class="form-control" name="firstname" placeholder="prénom"></p>
+<p class="texte"><label for="lastname">Nom:</label> <input type="text"  class="form-control" name="lastname" placeholder="nom"></p>
+<p class="texte"><label for="age">Age:</label> <input type="number" class="form-control"  name="age" placeholder="age"></p>
+<p class="texte"><label for="email">Email:</label> <input type="email" class="form-control"  name="email" placeholder="email"></p>
+<p class="texte"><label for="address">Adresse:</label> <input type="text" class="form-control"  name="address" placeholder="adresse"></p>
+<p class="texte"><label for="PostalCode">Code postal:</label> <input type="number" class="form-control"  name="postalCode" placeholder="Code postal"></p>
+<p class="texte"><label for="city">Ville:</label> <input type="text" class="form-control"  name="city" placeholder="Ville"></p>
+<p class="texte"><label for="password">Mot de passe:</label> <input id="pass1" type="password" class="form-control"  name="password" placeholder="mot de passe"></p>
+<p class="texte"><label for="password2">Saisir à nouveau le mot de passe:</label> <input id="pass2" type="password" class="form-control"  name="password2" placeholder="mot de passe"></p>
+<input type="submit" class="btn btn-lg btn-success" value="S'inscrire"/></div>
 </form>
 </div>
 <script>

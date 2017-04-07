@@ -15,16 +15,16 @@
 <form method="post" action="Login">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email">
     </div>
     <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter password">
+      <label for="pwd">Mot de passe:</label>
+      <input type="password" class="form-control" name="password" id="pwd" placeholder="Mot de passe">
     </div>
     <div class="checkbox">
-      <label><input type="checkbox"> Remember me</label>
+      <label><input type="checkbox">Se rappeler de moi</label>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary">Connexion</button>
   </form>
 </div>
 

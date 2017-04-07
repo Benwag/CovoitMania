@@ -67,7 +67,7 @@ for (var user in usersFields) {
 
 }
 </script>
-		<title>Users List</title>
+		<title>Localisation des utilisateurs</title>
 	</head>
 	<body onload="initialiser()">
 	

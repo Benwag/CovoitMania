@@ -34,9 +34,8 @@
 		</ul>
 		</div>
 		
-		<a href="AllUsers">View All Users</a> ||
-		<a href="EditUser?user=${user.getId()}">Edit</a> ||
-		<a href="EditPreference?user=${user.getId()}">Set Preferences</a>
+
+		<a href="AllUsers">View Map</a> 
 		
 	</body>
 	

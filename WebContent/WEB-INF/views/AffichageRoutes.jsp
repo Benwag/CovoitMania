@@ -22,6 +22,8 @@
 <body onload="init();">
 	<div>
 		<table>
+			<p>Entrez le detour maximal que vous pourriez faire:
+			<input type="number" value="1" id="detours">km</p>
 			Rechercher des covoiturages à Proximité:
 			<input type="button" value="Rechercher" onclick="rechercher()">
 			</td>
@@ -66,7 +68,7 @@
 
 	
 	var map,geocoder, marker, marker2; 
-	
+	var markers=[];
 	var depart,arrivee,ptCheck; 
 	
 	/*initialise google MAP V3*/
@@ -170,29 +172,37 @@
 		
 		  function getCandidate(){
 			  var candidatsValides=new Array();
+			 for(var marks of markers){marks.setMap(null);}
+			 markers=new Array;
+			  var detour=document.getElementById("detours").value;
 			  for( var key in users){
 				  utilisateur=users[key];
 				  if (utilisateur!=user){
 					  var latCandidate=utilisateur.lat;
 				  	  var lngCandidate=utilisateur.lng;
 				  	  //var diam=user.detourMaximum+utilisateur.distanceParcourableMax:
-				  	  var diam=0.5;
+				  	  var diam=detour;
 				  	  for (var point of listParcours){
 				  		  if (calculDistanceEntreDeuxCoordonnees(latCandidate,lngCandidate,point[0],point[1])<diam){
 				  			  candidatsValides.push(utilisateur);
 				  			  var latLng = new google.maps.LatLng(utilisateur.lat, utilisateur.lng);
-				  			  new google.maps.Marker({
+				  			  markers.push(new google.maps.Marker({
 				  			  map: map,
 				  			  position: latLng
-				  			  })
+				  			  }))
 				  			  break;
 				  		  }
 				  	  }
 				    }
 			  }
+			  var myNode = document.getElementById("divCandidates");
+			  myNode.innerHTML = '';
 			  var resultats=document.createElement('h1');
-			  var resTitre=document.createTextNode("Contactez les covoitureurs près de chez vous!!:")
+			  var resTitre=document.createTextNode("Contactez les covoitureurs près de chez vous!!:");
+			  var resEchec=document.createTextNode("Aucun resultat ne correspond a votre recherche");
+			  if (candidatsValides.length!=0)
 			  resultats.appendChild(resTitre);
+			  else resultats.appendChild(resEchec);
 			  document.getElementById('divCandidates').appendChild(resultats);
 			  var list = document.createElement('ul');
 

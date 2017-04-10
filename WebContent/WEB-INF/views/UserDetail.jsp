@@ -26,11 +26,17 @@
 			<li class="list-group-item">Adresse: ${user.getAddress()}</li>
 			<li class="list-group-item">Code postal: ${user.getPostCode()}</li>
 			<li class="list-group-item">Ville: ${user.getCity()}</li>
+			<li class="list-group-item">Conducteur: ${user.getPreference().getConducteur()}</li>
+			<li class="list-group-item">j'écoute de la musique ${user.getPreference().getMusic()}</li>
+			<li class="list-group-item">Je fume: ${user.getPreference().getFumeur()}</li>
+			<li class="list-group-item">Je parle ${user.getPreference().getBlabla()}</li>
+			<li class="list-group-item">Je peux  me déplacer d'environ  <b>${user.getPreference().getDetour()} km</b> par rapport à ma route / mon point de départ</li>
 		</ul>
 		</div>
 		
 		<a href="AllUsers">View All Users</a> ||
-		<a href="EditUser?user=${user.getId()}">Edit</a>
+		<a href="EditUser?user=${user.getId()}">Edit</a> ||
+		<a href="EditPreference?user=${user.getId()}">Set Preferences</a>
 		
 	</body>
 	

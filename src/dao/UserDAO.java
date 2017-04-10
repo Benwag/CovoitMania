@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.cfranc.UserManager.ConvertAdressCoord;
 import com.cfranc.UserManger.model.ListeUtilisateur;
+import com.cfranc.UserManger.model.Preferences;
 import com.cfranc.UserManger.model.Utilisateur;
 
 public class UserDAO {
@@ -121,71 +122,87 @@ public class UserDAO {
 		users.put(user.getId(), user);
 		return user;
 	}
-	
-	
-	public static Utilisateur editUser(long userId, String firstname, String lastname, 
-			 String ageString, String email, String address, String postalCodeString,String city){
+
+	public static Utilisateur editUser(long userId, String firstname, String lastname, String ageString, String email,
+			String address, String postalCodeString, String city) {
 		Utilisateur user = users.get(userId);
-		
-		if (firstname != ""){
+
+		if (firstname != "") {
 			user.setFirstname(firstname);
 		}
-		if (lastname != ""){
+		if (lastname != "") {
 			user.setLastname(lastname);
 		}
-		if (ageString != ""){
+		if (ageString != "") {
 			int age = Integer.parseInt(ageString);
 			user.setAge(age);
 		}
-		if (email != ""){
+		if (email != "") {
 			user.setEmail(email);
 		}
-		if (address != ""){
+		if (address != "") {
 			user.setAddress(address);
 		}
-		if (postalCodeString != ""){
+		if (postalCodeString != "") {
 			int postalCode = Integer.parseInt(postalCodeString);
 			user.setPostCode(postalCode);
 		}
-		if (city != ""){
+		if (city != "") {
 			user.setCity(city);
 		}
-		
-		if (address != "" || city != ""){
+
+		if (address != "" || city != "") {
 			user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
 		}
-		
-		return user;
-		
-	}
-	
-	
-	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword){
-		Utilisateur user = users.get(userId);
-		
-			user.setPassword(newPassword);
-			return user;
-		
-	}
-	
-	
-	
 
-//	public static boolean isEmailNotUsed(String email){
-//		Collection<Utilisateur> userList = users.values();
-//		boolean isEmailGood = true;
-//		for (Utilisateur utilisateur : userList) {
-//
-//			if (email.equals(utilisateur.getEmail())) {
-//				isEmailGood = false;
-//				return isEmailGood;
-//				
-//			}
-//		} if (isEmailGood){
-//			return true;
-//		}
-//	}
-	
-	
-	
+		return user;
+
+	}
+
+	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword) {
+		Utilisateur user = users.get(userId);
+
+		user.setPassword(newPassword);
+		return user;
+
+	}
+
+	public static Utilisateur editPreferences(long userId, String conducteur, String music, String fumeur,
+			String blabla, String detourString) {
+		Utilisateur user = users.get(userId);
+
+		Preferences preference = new Preferences();
+
+		if ("oui".equals(conducteur)) {
+			preference.setConducteur("oui");
+		} else if ("non".equals(conducteur)) {
+			preference.setConducteur("non");
+		}
+		preference.setConducteur(conducteur);
+
+		if ("oui".equals(music)) {
+			preference.setMusic("oui");
+		} else if ("non".equals(music)) {
+			preference.setMusic("non");
+		}
+
+		if ("oui".equals(fumeur)) {
+			preference.setFumeur("oui");
+		} else if ("non".equals(fumeur)) {
+			preference.setFumeur("non");
+		}
+
+		if ("oui".equals(blabla)) {
+			preference.setBlabla("beaucoup");
+		} else if ("non".equals(blabla)) {
+			preference.setBlabla("pas du tout");
+		}
+
+		long detour = Long.parseLong(detourString);
+		preference.setDetour(detour);
+
+		user.setPreference(preference);
+		return user;
+	}
+
 }

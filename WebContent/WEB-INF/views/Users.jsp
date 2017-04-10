@@ -4,7 +4,6 @@
     import="java.util.*, com.cfranc.UserManger.model.*"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!DOCTYPE html>
 
 <html>
@@ -72,8 +71,8 @@ for (var user in usersFields) {
 	<body onload="initialiser()">
 	
 	<c:import url="/WEB-INF/views/Menu.jsp" />
-	<h2>Localisation des utilisateurs</h2>
-	<div id="carte" style="width:100%; height: 75%"></div>
+	<h2 class="container">Localisation des utilisateurs</h2>
+	<div class="container" id="carte" style="width:100%; height: 75%"></div>
 	<div class="container">
 	
 	

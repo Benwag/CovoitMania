@@ -10,9 +10,9 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
-<h2>Inscription</h2>
+<h2 class="container">Inscription</h2>
 <c:if test="${error != null}">${error}</c:if>
-<div class="jumbotron">
+<div class="jumbotron container">
 <form action="AddUser" onsubmit="return myFunction()" method="post">
 <div class="form-group">
 <p class="texte"><label for="firstname">Prénom:</label> <input type="text" class="form-control" name="firstname" placeholder="prénom"></p>

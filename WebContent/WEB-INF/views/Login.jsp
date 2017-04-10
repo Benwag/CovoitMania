@@ -10,15 +10,15 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
-	<div class="container">
+	<div class="jumbotron container">
   <h2>Identification</h2>
 <form method="post" action="Login">
     <div class="form-group">
-      <label for="email">Email:</label>
+      <p class="texte"><label for="email">Email:</label></p>
       <input type="email" class="form-control" id="email" name="email" placeholder="Email">
     </div>
     <div class="form-group">
-      <label for="pwd">Mot de passe:</label>
+      <p class="texte"><label class="texte" for="pwd">Mot de passe:</label></p>
       <input type="password" class="form-control" name="password" id="pwd" placeholder="Mot de passe">
     </div>
     <div class="checkbox">

@@ -18,8 +18,16 @@ public class Utilisateur implements Serializable {
 	private int PostCode;
 
 	private double[] coord;
+	
+	private Preferences preference;
 
 	
+	public Preferences getPreference() {
+		return preference;
+	}
+	public void setPreference(Preferences preference) {
+		this.preference = preference;
+	}
 	public int getPostCode() {
 		return PostCode;
 	}

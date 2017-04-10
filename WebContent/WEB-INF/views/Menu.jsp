@@ -50,10 +50,13 @@
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="active"><a href="index.jsp">Accueil</a></li>
             <li role="presentation"><a href="<c:url value="/AllUsers"/>">Carte</a></li>
+			<li class="connected" role="presentation"><a href="<c:url value="/AfficherRoutes"/>">Recherche</a></li>
             <li class="vanilla" role="presentation"><a href="<c:url value="/AddUser"/>">Inscription</a></li>
 			<li class="vanilla" role="presentation"><a href="<c:url value="/Login"/>">Connexion</a></li>
 			<li class="connected" role="presentation"><a href="<c:url value="/EditUser?user=${user.key}"/>">Mon compte</a></li>
 			<li class="connected" role="presentation"><a href="<c:url value="/Logout"/>">Déconnexion</a></li>
+
+            
           </ul>
         </nav>
         <h3 class="text-muted">CovoitMania</h3>	

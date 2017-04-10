@@ -68,6 +68,34 @@ public class UserDAO {
 			bill.setCoord(ConvertAdressCoord.getCoordFromAdress(bill.getAddress() + " " + bill.getCity()));
 
 			users.put(bill.getId(), bill);
+			
+			Utilisateur jago = new Utilisateur();
+			jago.setId(5);
+			jago.setFirstname("jago");
+			jago.setLastname("Johnson");
+			jago.setAge(59);
+			jago.setEmail("jago@johnson.name");
+			jago.setPassword("mdp");
+			jago.setAddress("rue de Grenoble");
+			jago.setPostCode(67000);
+			jago.setCity("Strasbourg");
+			jago.setCoord(ConvertAdressCoord.getCoordFromAdress(jago.getAddress() + " " + jago.getCity()));
+
+			users.put(jago.getId(), jago);
+			
+			Utilisateur jacky = new Utilisateur();
+			jacky.setId(6);
+			jacky.setFirstname("jacky");
+			jacky.setLastname("Johnson");
+			jacky.setAge(59);
+			jacky.setEmail("jackyl@johnson.name");
+			jacky.setPassword("mdp");
+			jacky.setAddress("rue de Hagenau");
+			jacky.setPostCode(67000);
+			jacky.setCity("Strasbourg");
+			jacky.setCoord(ConvertAdressCoord.getCoordFromAdress(jacky.getAddress() + " " + jacky.getCity()));
+
+			users.put(jacky.getId(), jacky);
 
 			System.out.print(users.nextId());
 

@@ -29,17 +29,8 @@
 		</table>
 	</div>
 	<div id="divMap" style="align: center; width: 800px; height: 800px"></div>
-	<div id="divCandidates" value="">
-	<c:forEach var="user" items="${users}" varStatus="stat">
-      <tr>
-        <td>${user.value.getLastname()} </td>
-        <td>${user.value.getFirstname()} </td>
-        <%-- <td>${user.value.getEmail()}</td> --%>
-        <td><a href="DetailUser?user=${user.key}">Details</a></td>
-        <%-- <td><a href="EditUser?user=${user.key}">Edit</a></td>
-        <td><a href="DeleteUser?user=${user.key}">Delete</a></td> --%>        
-      </tr>
-    </c:forEach>
+	<div id="divCandidates" > 
+	
     </div>
 	<br />
 </body>
@@ -199,8 +190,26 @@
 				  	  }
 				    }
 			  }
-			  document.getElementById("divCandidates").value ="boobies";
-			  	
+			  var list = document.createElement('ul');
+
+			    for( var key in candidatsValides) {
+			    	var vCandidats=candidatsValides[key];
+			        // Create the list item:
+			        var item = document.createElement('li');
+
+			        // Set its contents:
+			        item.appendChild(document.createTextNode(vCandidats.prenom));
+
+			        // Add it to the list:
+			        list.appendChild(item);
+			    }
+
+			    // Finally, return the constructed list:
+			     list;
+
+
+			// Add the contents of options[0] to #foo:
+			document.getElementById('divCandidates').appendChild(list);
 		  		return candidatsValides;
 			  
 		  }

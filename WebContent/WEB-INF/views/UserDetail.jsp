@@ -27,10 +27,15 @@
 			<li class="list-group-item">Code postal: ${user.getPostCode()}</li>
 			<li class="list-group-item">Ville: ${user.getCity()}</li>
 		</ul>
+		
+		<div><p>Message</p>
+		<textarea name="textarea" rows="5" cols="55"> Bonjour, je souhaiterais vous proposer un covoiturage.
+		</textarea>
+		</div>
+		<input type="button" value="Envoyer" >
 		</div>
 		
-		<a href="AllUsers">View All Users</a> ||
-		<a href="EditUser?user=${user.getId()}">Edit</a>
+		<a href="AllUsers">View Map</a> 
 		
 	</body>
 	

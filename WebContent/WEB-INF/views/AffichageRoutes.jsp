@@ -190,15 +190,25 @@
 				  	  }
 				    }
 			  }
+			  var resultats=document.createElement('h1');
+			  var resTitre=document.createTextNode("Contactez les covoitureurs près de chez vous!!:")
+			  resultats.appendChild(resTitre);
+			  document.getElementById('divCandidates').appendChild(resultats);
 			  var list = document.createElement('ul');
 
 			    for( var key in candidatsValides) {
 			    	var vCandidats=candidatsValides[key];
 			        // Create the list item:
-			        var item = document.createElement('li');
+ 			        var item = document.createElement('li'); 
 
 			        // Set its contents:
-			        item.appendChild(document.createTextNode(vCandidats.prenom));
+ 			       
+
+			        var createA = document.createElement('a');
+			        var createAText = document.createTextNode(vCandidats.prenom);
+			        createA.appendChild(createAText);
+			        createA.setAttribute('href', "DetailUser?user="+vCandidats.id);
+			        item.appendChild(createA);
 
 			        // Add it to the list:
 			        list.appendChild(item);

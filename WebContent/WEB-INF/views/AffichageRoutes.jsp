@@ -10,6 +10,7 @@
 <title>Users List</title>
 </head>
 <body onload="init();">
+<c:import url="/WEB-INF/views/Menu.jsp" />
 	<div>
 		<table>
 			<p>Entrez le detour maximal que vous pourriez faire:

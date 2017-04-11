@@ -6,6 +6,7 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
+
           <c:choose>
     		<c:when test="${not empty loggedUser.getId() && loggedUser.getId()!= 0}">
         		<c:set var="varClass1" value="show"/>
@@ -21,10 +22,12 @@
             <li class="${varClass2}" role="presentation"><a href="<c:url value="/AddUser"/>">Inscription</a></li>
 			<li class="${varClass2}" role="presentation"><a href="<c:url value="/Login"/>">Connexion</a></li>
 			<li class="${varClass1}" role="presentation"><a href="<c:url value="/AfficherRoutes"/>">Recherche</a></li>
+			<li class="${varClass1}" role="presentation"><a href="<c:url value="/Messagerie"/>">Messagerie</a></li>
 			<li class="${varClass1}" role="presentation"><a href="<c:url value="/EditUser?user=${loggedUser.getId()}"/>">Mon compte</a></li>
 			<li class="${varClass1}" role="presentation" onclick="logout()"><a href="<c:url value="/Logout"/>">Déconnexion</a></li>
 
             
+
           </ul>
         </nav>
         <h3 class="text-muted">CovoitMania</h3>	

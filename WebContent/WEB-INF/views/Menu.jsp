@@ -33,6 +33,7 @@
             <li role="presentation" class="active"><a href="index.jsp">Accueil</a></li>
             <li role="presentation"><a href="<c:url value="/AllUsers"/>">Carte</a></li>
             <li role="presentation"><a href="<c:url value="/AfficherRoutes"/>">Recherche</a></li>
+            <li role="presentation"><a href="<c:url value="/Messagerie"/>">Messagerie</a></li>
             <li role="presentation"><a href="<c:url value="/AddUser"/>">Inscription</a></li>
             <li role="presentation"><a href="<c:url value="/Login"/>">Connexion</a></li>
           </ul>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.cfranc.UserManger.model.ListeMessage;
 import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
 import dao.UserDAO;
@@ -38,11 +39,13 @@ public class AllUsers extends HttpServlet {
 		if(session.getAttribute("users") == null){	
 			ListeUtilisateur users = UserDAO.getStaticUsers();
 			session.setAttribute("users", users);
+			session.setAttribute("listeMessage", listeMessage);
 			System.out.println("Session users created");
 		}
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/Users.jsp");
 		dispatch.forward(request, response);
 	}
+	ListeMessage listeMessage=new ListeMessage();
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

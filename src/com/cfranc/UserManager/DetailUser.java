@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.cfranc.UserManger.model.ListeMessage;
+import com.cfranc.UserManger.model.Message;
 import com.cfranc.UserManger.model.Utilisateur;
 
 @WebServlet("/DetailUser")
@@ -42,7 +44,20 @@ public class DetailUser extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String destinataireId = request.getParameter("user");
+		HttpSession session = request.getSession();
+		String expediteurId="1";
+		if (session.getAttribute("loggedUser")!=null){
+		expediteurId= ((Long)((Utilisateur)session.getAttribute("loggedUser")).getId()).toString();}
+		String messageContent=request.getParameter("Message");
+		ListeMessage listeMessage=new ListeMessage();
+		if (session.getAttribute("listeMessage")!=null){listeMessage=(ListeMessage)session.getAttribute("listeMessage");}
+
+		Long nextId=listeMessage.nextId();
+		Message message=new Message(expediteurId, destinataireId,messageContent,nextId);
+		listeMessage.put(nextId, message);
+		session.setAttribute("listeMessage", listeMessage);
+		response.sendRedirect("AfficherRoutes");
 	}
 
 }

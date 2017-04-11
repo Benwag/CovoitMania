@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
-
+import dao.UserDAO;
 /**
  * Servlet implementation class Login
  */
@@ -33,7 +33,12 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("users") == null) {
+			ListeUtilisateur users = UserDAO.getStaticUsers();
+			session.setAttribute("users", users);
+			System.out.println("Session users created");
+		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/Login.jsp");
 		dispatch.forward(request, response);
@@ -51,7 +56,8 @@ public class Login extends HttpServlet {
 		for (Utilisateur user : users.values()){
 			if (email.equals(user.getEmail())){
 				if(user.getPassword().equals(password)){
-					RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/Logged.jsp");
+					((Utilisateur) session.getAttribute("loggedUser")).setId(user.getId());
+					RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/Logged.jsp");
 					dispatch.forward(request, response);
 				}
 				else 

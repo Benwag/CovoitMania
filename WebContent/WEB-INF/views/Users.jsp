@@ -4,18 +4,11 @@
     import="java.util.*, com.cfranc.UserManger.model.*"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!DOCTYPE html>
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<!-- <link rel="stylesheet" href="WEB-INF/styles/style.css"> -->
+	<c:import url="/style/style.jsp"/>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBBqYxzbViJA31VFQiVNXUqQHKfSbISNZY"></script>
 <script type="text/javascript">
 function initialiser() {
@@ -67,13 +60,13 @@ for (var user in usersFields) {
 
 }
 </script>
-		<title>Users List</title>
+		<title>Localisation des utilisateurs</title>
 	</head>
 	<body onload="initialiser()">
 	
 	<c:import url="/WEB-INF/views/Menu.jsp" />
-	<h2>Localisation des utilisateurs</h2>
-	<div id="carte" style="width:100%; height: 75%"></div>
+	<h2 class="container">Localisation des utilisateurs</h2>
+	<div class="container" id="carte" style="width:100%; height: 75%"></div>
 	<div class="container">
 	
 	

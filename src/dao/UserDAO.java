@@ -106,7 +106,7 @@ public class UserDAO {
 	}
 
 	public static Utilisateur addUser(String firstname, String lastname, int age, String email, String address,
-			String city, int postalCode, String password) {
+			String city, int postalCode, String password, long id) {
 
 		Utilisateur user = new Utilisateur();
 		user.setFirstname(firstname);
@@ -118,7 +118,7 @@ public class UserDAO {
 		user.setPassword(password);
 		user.setPostCode(postalCode);
 		user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
-		user.setId(users.nextId());
+		user.setId(id);
 		users.put(user.getId(), user);
 		return user;
 	}

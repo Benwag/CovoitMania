@@ -67,14 +67,6 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-ul li .visible {
-	display: inline !important;
-}
-ul li .invisible {
-	display: none !important;
-	width: 0% !important;
-	height: 0% !important;
-}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

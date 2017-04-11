@@ -27,8 +27,8 @@
 </form>
 
 
-<p><a href="EditPassword?user=${user.getId()}"><input  class="btn btn-default" value="Change Password"/></a></p>
-
+<p><a href="EditPassword?user=${user.getId()}"><input  class="btn btn-default" value="Changer le mot de passe"/></a></p>
+<p><a href="DeleteUser?user=${user.getId()}"><input class="btn btn-warning" value="Supprimer mon compte"/></a>
 
 </body>
 </html>

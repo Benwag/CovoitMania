@@ -63,7 +63,7 @@ for (var user in usersFields) {
 </head>
 <body onload="initialiser()">
 <c:import url="/WEB-INF/views/Menu.jsp" />
-<div id="carte" style="width:100%; height: 75%"></div>
+<div id="carte container" style="width:100%; height: 75%"></div>
 <div class="jumbotron container">
         <h1>Covoiturez malin!</h1>
         <p class="texte">Avec CovoitMania, organisez et optimisez vos déplacements quotidiens jusqu'à votre lieu de travail en covoiturant avec vos collègues.</p>

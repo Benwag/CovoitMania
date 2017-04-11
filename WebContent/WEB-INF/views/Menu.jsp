@@ -8,12 +8,12 @@
           <ul class="nav nav-pills pull-right">
           <c:choose>
     		<c:when test="${not empty loggedUser.getId() && loggedUser.getId()!= 0}">
-        		<c:set var="varClass1" value="visible"/>
-        		<c:set var="varClass2" value="invisible"/>
+        		<c:set var="varClass1" value="show"/>
+        		<c:set var="varClass2" value="hidden"/>
     		</c:when>
     		<c:otherwise>
-        	<c:set var="varClass1" value="invisible"/>
-        	<c:set var="varClass2" value="visible"/>
+        	<c:set var="varClass1" value="hidden"/>
+        	<c:set var="varClass2" value="show"/>
     		</c:otherwise>
 			</c:choose>
             <li role="presentation" class="active visible"><a href="index.jsp">Accueil</a></li>

@@ -86,8 +86,8 @@ public class AddUser extends HttpServlet {
 				}
 			}
 			if (isAdressGood) {
-
-				Utilisateur user = UserDAO.addUser(firstname, lastname, age, email, address, city, postalCode, password);
+				long id = users.nextId();
+				Utilisateur user = UserDAO.addUser(firstname, lastname, age, email, address, city, postalCode, password, id);
 				response.sendRedirect("DetailUser?user=" + user.getId());
 			}
 		}

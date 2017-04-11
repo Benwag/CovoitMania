@@ -50,14 +50,41 @@ public class EditUser extends HttpServlet {
 		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
-		String age = request.getParameter("age");
+		String ageString = request.getParameter("age");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
-		String postalCode = request.getParameter("postalCode");
+		String postalCodeString = request.getParameter("postalCode");
 		String city = request.getParameter("city");
 		
-		long userId = user.getId();
-		UserDAO.editUser(userId, firstname, lastname, age, email, address, postalCode, city);
+		if (firstname != "") {
+			user.setFirstname(firstname);
+		}
+		if (lastname != "") {
+			user.setLastname(lastname);
+		}
+		if (ageString != "") {
+			int age = Integer.parseInt(ageString);
+			user.setAge(age);
+		}
+		if (email != "") {
+			user.setEmail(email);
+		}
+		if (address != "") {
+			user.setAddress(address);
+		}
+		if (postalCodeString != "") {
+			int postalCode = Integer.parseInt(postalCodeString);
+			user.setPostCode(postalCode);
+		}
+		if (city != "") {
+			user.setCity(city);
+		}
+
+		if (address != "" || city != "") {
+			user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
+		}
+		
+		UserDAO.editUser(user);
 		
 		response.sendRedirect("DetailUser?user=" + user.getId());
 	}

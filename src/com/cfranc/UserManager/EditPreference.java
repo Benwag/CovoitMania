@@ -54,7 +54,7 @@ public class EditPreference extends HttpServlet {
 		long userId = user.getId();
 		UserDAO.editPreferences(userId, conducteur, music, fumeur, blabla, detourString);
 		
-		response.sendRedirect("DetailUser?user=" + user.getId());
+		response.sendRedirect("UserAccount?user=" + user.getId());
 		
 		
 		

@@ -190,8 +190,8 @@
 			  }
 			  var myNode = document.getElementById("divCandidates");
 			  myNode.innerHTML = '';
-			  var resultats=document.createElement('h1');
-			  var resTitre=document.createTextNode("Contactez les covoitureurs près de chez vous!!:");
+			  var resultats=document.createElement('h2');
+			  var resTitre=document.createTextNode("Contactez les covoitureurs près de chez vous!!");
 			  var resEchec=document.createTextNode("Aucun resultat ne correspond a votre recherche");
 			  if (candidatsValides.length!=0)
 			  resultats.appendChild(resTitre);

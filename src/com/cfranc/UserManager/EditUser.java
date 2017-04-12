@@ -59,7 +59,7 @@ public class EditUser extends HttpServlet {
 		long userId = user.getId();
 		UserDAO.editUser(userId, firstname, lastname, age, email, address, postalCode, city);
 		
-		response.sendRedirect("DetailUser?user=" + user.getId());
+		response.sendRedirect("AccountUser?user=" + user.getId());
 	}
 
 }

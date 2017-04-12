@@ -78,12 +78,9 @@ for (var user in usersFields) {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Lastname</th>
-						<th>Firstname</th>
-						<!-- <th>Email</th> -->
-						<th class="${connected}">Details</th>
-						<!-- <th>Edit</th>
-        <th>Delete</th> -->
+						<th>Nom</th>
+						<th>Prénom</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -91,8 +88,7 @@ for (var user in usersFields) {
 						<tr>
 							<td>${user.value.getLastname()}</td>
 							<td>${user.value.getFirstname()}</td>
-							<td class="${connected}"><a
-								href="DetailUser?user=${user.key}">Details</a></td>
+					
 						</tr>
 					</c:forEach>
 

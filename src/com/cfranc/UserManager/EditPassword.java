@@ -61,7 +61,7 @@ public class EditPassword extends HttpServlet {
 		}
 		else {
 
-			response.sendRedirect("EditPassword?user=" + user.getId());
+			response.sendRedirect("UserAccount?loggedUser=" + user.getId());
 		}
 
 	}

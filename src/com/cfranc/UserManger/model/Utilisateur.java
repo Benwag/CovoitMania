@@ -39,7 +39,7 @@ public class Utilisateur implements Serializable {
 
 	private BigInteger score;
 
-	@OneToOne
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Preferences preference;
 
 	public Utilisateur() {

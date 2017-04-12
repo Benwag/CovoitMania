@@ -29,13 +29,21 @@ public class EditPassword extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		long id = Long.parseLong((String) request.getParameter("user"));	
-		Utilisateur user = UserDAO.getUtilisateur(id);
-		session.setAttribute("user", user);
+		String userId = request.getParameter("user");
+		if (userId == null) {
+			getServletContext().setAttribute("error", "User doesn't exist");
+			response.sendRedirect("AllUsers");
+		} else {
+			HttpSession session = request.getSession();
+			HashMap<Long, Utilisateur> users = (HashMap<Long, Utilisateur>) session.getAttribute("users");
 
-		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/PasswordEdit.jsp");
-		dispatch.forward(request, response);
+			long id = Long.parseLong((String) request.getParameter("user"));
+			Utilisateur user = users.get(id);
+			session.setAttribute("user", user);
+
+			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/PasswordEdit.jsp");
+			dispatch.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,8 +61,9 @@ public class EditPassword extends HttpServlet {
 		boolean isPasswordGood = previousPassword.equals(user.getPassword());
 
 		if (isPasswordGood) {
-
-			user = UserDAO.editPassword(userId, previousPassword, newPassword);
+			user.setPassword(newPassword);
+			user = UserDAO.editPassword(user);
+			session.setAttribute("users", UserDAO.findAll2());
 			response.sendRedirect("DetailUser?user=" + user.getId());
 			
 		}

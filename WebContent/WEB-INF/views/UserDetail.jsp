@@ -22,11 +22,11 @@
 			<li class="list-group-item">Adresse: ${user.getAddress()}</li>
 			<li class="list-group-item">Code postal: ${user.getPostCode()}</li>
 			<li class="list-group-item">Ville: ${user.getCity()}</li>
-			<li class="list-group-item">Conducteur: ${user.getPreference().getConducteur()}</li>
-			<li class="list-group-item">j'écoute de la musique ${user.getPreference().getMusic()}</li>
-			<li class="list-group-item">Je fume: ${user.getPreference().getFumeur()}</li>
-			<li class="list-group-item">Je parle ${user.getPreference().getBlabla()}</li>
-			<li class="list-group-item">Je peux  me déplacer d'environ  <b>${user.getPreference().getDetour()} km</b> par rapport à ma route / mon point de départ</li>
+			<li class="list-group-item">Conducteur: ${user.getPreferences().getConducteur()}</li>
+			<li class="list-group-item">j'écoute de la musique ${user.getPreferences().getMusic()}</li>
+			<li class="list-group-item">Je fume: ${user.getPreferences().getFumeur()}</li>
+			<li class="list-group-item">Je parle ${user.getPreferences().getBlabla()}</li>
+			<li class="list-group-item">Je peux  me déplacer d'environ  <b>${user.getPreferences().getDetour()} km</b> par rapport à ma route / mon point de départ</li>
 		</ul>
 		</div>
 		<div>

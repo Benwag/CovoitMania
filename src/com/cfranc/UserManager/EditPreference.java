@@ -15,6 +15,7 @@ import com.cfranc.UserManger.model.Utilisateur;
 
 import dao.UserDAO;
 
+import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Preferences;
 
 
@@ -42,8 +43,9 @@ public class EditPreference extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		ListeUtilisateur users = (ListeUtilisateur) session.getAttribute("users");
 		Utilisateur user = (Utilisateur) request.getSession().getAttribute("user");
-		
 		
 		String conducteur = request.getParameter("conducteur");
 
@@ -51,9 +53,38 @@ public class EditPreference extends HttpServlet {
 		String fumeur = request.getParameter("fumeur");
 		String blabla = request.getParameter("blabla");		
 		String detourString = request.getParameter("detour");
-		long userId = user.getId();
-		UserDAO.editPreferences(userId, conducteur, music, fumeur, blabla, detourString);
-		
+		Preferences preference = new Preferences();
+
+		if ("oui".equals(conducteur)) {
+			preference.setConducteur("oui");
+		} else if ("non".equals(conducteur)) {
+			preference.setConducteur("non");
+		}
+
+		if ("oui".equals(music)) {
+			preference.setMusic("oui");
+		} else if ("non".equals(music)) {
+			preference.setMusic("non");
+		}
+
+		if ("oui".equals(fumeur)) {
+			preference.setFumeur("oui");
+		} else if ("non".equals(fumeur)) {
+			preference.setFumeur("non");
+		}
+
+		if ("oui".equals(blabla)) {
+			preference.setBlabla("beaucoup");
+		} else if ("non".equals(blabla)) {
+			preference.setBlabla("pas du tout");
+		}
+
+		long detour = Long.parseLong(detourString);
+		preference.setDetour(detour);
+
+		user.setPreferences(preference);
+		UserDAO.editPreferences(user);
+		session.setAttribute("users", UserDAO.findAll2());
 		response.sendRedirect("DetailUser?user=" + user.getId());
 		
 		

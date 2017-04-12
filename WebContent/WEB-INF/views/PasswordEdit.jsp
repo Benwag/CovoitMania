@@ -15,7 +15,7 @@
 <div class="form-group">
 
 <label for="PreviousPassword">Previous Password</label> <input type="password" class="form-control" name="previousPassword"  value=""></div>
-<p><label for="NewPassword">New Password</label> <input id = "pass1" type="password"  class="form-control" name="newpassword" value=""></p>
+<p><label for="NewPassword">New Password</label> <input id = "pass1" type="password"  class="form-control" name="newPassword" value=""></p>
 <p><label for="ConfirmPassword">Confirm new password</label> <input id="pass2" type="password" class="form-control"  name="confirmPassword" value=""></p>
 
 <p><input type="submit" class="btn btn-default" value="Change Password"/></p>

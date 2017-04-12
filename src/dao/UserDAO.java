@@ -1,6 +1,5 @@
 package dao;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,29 +17,29 @@ public class UserDAO {
 
 	@PersistenceContext
 	private static EntityManager em;
+	private static UserDAO instance=null;
 
 	private UserDAO(EntityManager em) {
 		super();
 		UserDAO.em = em;
 	}
 
-	private static UserDAO instance = null;
 
 	public static UserDAO getInstance() {
 		if (instance == null) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("CovoitMania");
-			EntityManager em = factory.createEntityManager();
+			em = factory.createEntityManager();
 			instance = new UserDAO(em);
 		}
 		return instance;
 	}
 
-	public static List<Utilisateur> findAll() {
-		Query q = em.createQuery("SELECT t FROM Utilisateur t");
-		List<Utilisateur> listeUtilisateur = q.getResultList();
-	
-		return listeUtilisateur;
-	}
+//	public static List<Utilisateur> findAll() {
+//		Query q = em.createQuery("SELECT t FROM Utilisateur t");
+//		List<Utilisateur> listeUtilisateur = q.getResultList();
+//	
+//		return listeUtilisateur;
+//	}
 	
 
 	public static ListeUtilisateur findAll2() {
@@ -53,18 +52,23 @@ public class UserDAO {
 		return users;
 	}
 	
-	public static Utilisateur getUtilisateur(long id){
-		Query q = em.createQuery("SELECT t FROM Utilisateur t WHERE ID =" + id);
-		Utilisateur user = (Utilisateur) q.getSingleResult();
-		return user;
-	}
+//	public static Utilisateur getUtilisateur(long id){
+//		Query q = em.createQuery("SELECT t FROM Utilisateur t WHERE ID =" + id);
+//		Utilisateur user = (Utilisateur) q.getSingleResult();
+//		return user;
+//	}
 	
 
-	public static void getStaticUsers() {
+	public static ListeUtilisateur getStaticUsers() {
 
+		
+		
 		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
-		Preferences preference2 = new Preferences("oui", "oui", "non", "beaucoup", 2);
+		Preferences preference2 = new Preferences("oui", "oui", "oui", "beaucoup", 2);
+		
+		UserDAO.getInstance();
 
+		
 		em.getTransaction().begin();
 		Utilisateur bobby = new Utilisateur();
 		bobby.setFirstname("Bobby");
@@ -155,13 +159,18 @@ public class UserDAO {
 		em.persist(jacky);
 		em.getTransaction().commit();
 
+		ListeUtilisateur users = UserDAO.findAll2();
+		return users;
 	}
 
 
 	public static Utilisateur addUser(Utilisateur user) {
+		
+		UserDAO.getInstance();
 		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
 		em.getTransaction().begin();
 		user.setPreferences(preference);
+		
 		em.persist(user);
 		em.getTransaction().commit();
 
@@ -169,7 +178,7 @@ public class UserDAO {
 	}
 
 	public static Utilisateur editUser(Utilisateur user) {
-
+		UserDAO.getInstance();
 		em.getTransaction().begin();
 		em.merge(user);
 		em.getTransaction().commit();
@@ -178,49 +187,22 @@ public class UserDAO {
 
 	}
 
-	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword) {
-		Utilisateur user = UserDAO.findAll2().get(userId);
+	public static Utilisateur editPassword(Utilisateur user) {
 
-		user.setPassword(newPassword);
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(user);
+		em.getTransaction().commit();
 		return user;
 
 	}
 
-	public static Utilisateur editPreferences(long userId, String conducteur, String music, String fumeur,
-			String blabla, String detourString) {
+	public static Utilisateur editPreferences(Utilisateur user) {
 
-		Utilisateur user = UserDAO.findAll2().get(userId);
-
-		Preferences preference = new Preferences();
-
-		if ("oui".equals(conducteur)) {
-			preference.setConducteur("oui");
-		} else if ("non".equals(conducteur)) {
-			preference.setConducteur("non");
-		}
-
-		if ("oui".equals(music)) {
-			preference.setMusic("oui");
-		} else if ("non".equals(music)) {
-			preference.setMusic("non");
-		}
-
-		if ("oui".equals(fumeur)) {
-			preference.setFumeur("oui");
-		} else if ("non".equals(fumeur)) {
-			preference.setFumeur("non");
-		}
-
-		if ("oui".equals(blabla)) {
-			preference.setBlabla("beaucoup");
-		} else if ("non".equals(blabla)) {
-			preference.setBlabla("pas du tout");
-		}
-
-		long detour = Long.parseLong(detourString);
-		preference.setDetour(detour);
-
-		user.setPreferences(preference);
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(user);
+		em.getTransaction().commit();
 		return user;
 	}
 

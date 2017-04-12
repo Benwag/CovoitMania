@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
 import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
@@ -43,7 +43,7 @@ public class AddUser extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("users") == null){	
 			UserDAO.getStaticUsers();
-			Collection<Utilisateur> users = UserDAO.findAll();
+			ListeUtilisateur users = UserDAO.findAll2();
 			session.setAttribute("users", users);
 			System.out.println("Session users created");
 		}
@@ -58,7 +58,7 @@ public class AddUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Collection<Utilisateur> users = (Collection<Utilisateur>) session.getAttribute("users");
+		ListeUtilisateur users = (ListeUtilisateur) session.getAttribute("users");
 
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
@@ -76,7 +76,7 @@ public class AddUser extends HttpServlet {
 			int postalCode = Integer.parseInt(request.getParameter("postalCode"));
 			
 			
-			Collection<Utilisateur> userList = users;
+			Collection<Utilisateur> userList = users.values();
 			boolean isAdressGood = true;
 			for (Utilisateur utilisateur : userList) {
 
@@ -101,7 +101,9 @@ public class AddUser extends HttpServlet {
 				user.setPostCode(postalCode);
 				user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
 				UserDAO.addUser(user);
-
+				
+				
+				session.setAttribute("users", UserDAO.findAll2());
 
 				response.sendRedirect("DetailUser?user=" + user.getId());
 			}

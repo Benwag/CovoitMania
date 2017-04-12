@@ -23,7 +23,9 @@ body {
   margin-bottom: 0;
   line-height: 40px;
 }
-
+.header .btn {
+	padding: 14px 24px;
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -40,14 +42,18 @@ body {
 .container-narrow > hr {
   margin: 30px 0;
 }
-
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  border-radius: 15px;
 }
 .jumbotron .texte {
 	text-align: justify;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
 }
 .jumbotron .btn {
   padding: 14px 24px;
@@ -61,7 +67,6 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

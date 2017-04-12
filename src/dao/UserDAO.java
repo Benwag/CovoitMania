@@ -36,10 +36,21 @@ public class UserDAO {
 	}
 
 	public static List<Utilisateur> findAll() {
-
 		Query q = em.createQuery("SELECT t FROM Utilisateur t");
-		List<Utilisateur> ListeUtilisateur = q.getResultList();
-		return ListeUtilisateur;
+		List<Utilisateur> listeUtilisateur = q.getResultList();
+	
+		return listeUtilisateur;
+	}
+	
+
+	public static ListeUtilisateur findAll2() {
+		ListeUtilisateur users = new ListeUtilisateur();
+		Query q = em.createQuery("SELECT t FROM Utilisateur t");
+		List<Utilisateur> listeUtilisateur = q.getResultList();
+		for(Utilisateur user : listeUtilisateur){
+			users.put(user.getId(), user);
+		}
+		return users;
 	}
 	
 	public static Utilisateur getUtilisateur(long id){
@@ -146,12 +157,14 @@ public class UserDAO {
 
 	}
 
+
 	public static Utilisateur addUser(Utilisateur user) {
 		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
 		em.getTransaction().begin();
 		user.setPreferences(preference);
 		em.persist(user);
 		em.getTransaction().commit();
+
 		return user;
 	}
 
@@ -166,7 +179,7 @@ public class UserDAO {
 	}
 
 	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword) {
-		Utilisateur user = users.get(userId);
+		Utilisateur user = UserDAO.findAll2().get(userId);
 
 		user.setPassword(newPassword);
 		return user;
@@ -176,7 +189,7 @@ public class UserDAO {
 	public static Utilisateur editPreferences(long userId, String conducteur, String music, String fumeur,
 			String blabla, String detourString) {
 
-		Utilisateur user = users.get(userId);
+		Utilisateur user = UserDAO.findAll2().get(userId);
 
 		Preferences preference = new Preferences();
 

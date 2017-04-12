@@ -88,6 +88,7 @@ public class AddUser extends HttpServlet {
 				}
 			}
 			if (isAdressGood) {
+
 				
 				Utilisateur user = new Utilisateur();
 				user.setFirstname(firstname);
@@ -100,6 +101,8 @@ public class AddUser extends HttpServlet {
 				user.setPostCode(postalCode);
 				user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
 				UserDAO.addUser(user);
+
+
 				response.sendRedirect("DetailUser?user=" + user.getId());
 			}
 		}

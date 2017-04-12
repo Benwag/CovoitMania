@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- <%@ page errorPage="error.jsp" %> 
+<%@ page errorPage="error.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +11,10 @@
 <body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
 <h2 class="container">Changer le mot de passe</h2>
+<div class="container jumbotron form-group">
 <form action="EditPassword" onsubmit="return myFunction()" method="post">
 
-<div class="container jumbotron form-group">
+
 
 
 <p><label for="PreviousPassword">Précédent mot de passe:</label> <input type="password" class="form-control" name="previousPassword"  value=""></p>
@@ -22,9 +23,10 @@
 
 
 <p><input type="submit" class="btn btn-success" value="Enregistrer modification"/></p>
-</div>
-</form>
 
+</form>
+<a class="btn btn-default" href="UserAccount?user=${loggedUser.getId()}">Retour</a>
+</div>
 <script>
 function myFunction() {
     var pass1 = document.getElementById("pass1").value;

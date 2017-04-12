@@ -4,6 +4,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page errorPage="error.jsp" %> 
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,23 +19,21 @@
 	
 	<body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
-<h1 class="container warning">ARE YOU SURE YOU WANT TO DELETE THIS USER?</h1>
+<h1 class="container warning">Etes-vous sûr de vouloir supprimer votre compte?</h1>
 <div class="container jumbotron">
 		
 		<ul>
-			<li>First name : ${user.getFirstname()}</li>
-			<li>Last name : ${user.getLastname()}</li>
+			<li>Prénom : ${user.getFirstname()}</li>
+			<li>Nom : ${user.getLastname()}</li>
 			<li>Age : ${user.getAge()}</li>
 			<li>Email : ${user.getEmail()}</li> 
-			${user.getId()}
 		</ul>
 		<form action="DeleteUser" method="post" onsubmit="return verifyDelete();">
-			<input class="btn btn-danger" type="submit" value="YES I WANT TO DELETE HIM!" class="warning"/>
+			<input class="btn btn-danger" type="submit" value="Oui" class="warning"/>
 			<input type="hidden" name="user" value="${user.getId()}" />
 		</form>
 		
-		<a class="btn btn-default" href="AllUsers">View All Users</a>
-		<a class="btn btn-default" href="EditUser?user=${user.getId()}">Edit</a>
+		<a class="btn btn-default" href="UserAccount?user=${loggedUser.getId()}">Retour</a>
 </div>		
 		<script type="text/javascript">
 			function verifyDelete() {

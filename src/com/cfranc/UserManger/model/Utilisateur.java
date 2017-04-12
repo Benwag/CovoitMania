@@ -1,4 +1,5 @@
 
+
 package com.cfranc.UserManger.model;
 
 import java.io.Serializable;

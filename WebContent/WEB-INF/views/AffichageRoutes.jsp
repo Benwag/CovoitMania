@@ -14,7 +14,6 @@
 
 <c:import url="/WEB-INF/views/Menu.jsp"/>
 	<div class="container jumbotron">
-	<div>
 
 		<table>
 			<p>Entrez le detour maximal que vous pourriez faire:
@@ -49,8 +48,13 @@
 		    				postcode:"${user.value.getPostCode()}",
 		    				score:"${user.value.getScore()}",
 		    				lat:"${user.value.getCoord()[0]}",
+<<<<<<< HEAD
 		    				lng:"${user.value.getCoord()[1]}",
 		    				dist:"${user.value.getPreferences().getDetour()}"
+=======
+		    				lng:"${user.value.getCoord()[1]}"
+		    				//dist:"${user.value.getPreference().getDetour()}"
+>>>>>>> refs/heads/Florian
 		    				
 		    },
 		    </c:forEach>} 

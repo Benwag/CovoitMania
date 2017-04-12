@@ -204,11 +204,10 @@ public class UserDAO {
 	}
 
 	public static Utilisateur editPreferences(Utilisateur user) {
-
 		UserDAO.getInstance();
 		em.getTransaction().begin();
 		em.merge(user);
-		em.getTransaction().commit();
+		em.getTransaction().commit();	
 		return user;
 	}
 

@@ -44,11 +44,8 @@ public class Login extends HttpServlet {
 		dispatch.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		ListeUtilisateur users = (ListeUtilisateur)session.getAttribute("users");
 		String email = request.getParameter("email").trim();
@@ -56,7 +53,6 @@ public class Login extends HttpServlet {
 		for (Utilisateur user : users.values()){
 			if (email.equals(user.getEmail())){
 				if(user.getPassword().equals(password)){
-//					((Utilisateur) session.getAttribute("loggedUser")).setId(user.getId());
 					session.setAttribute("loggedUser", user);
 					RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/UserAccount.jsp");
 					dispatch.forward(request, response);
@@ -64,8 +60,7 @@ public class Login extends HttpServlet {
 				else 
 					break;}	
 			}
-//			getServletContext().setAttribute("error", "Mauvaise combinaison email, mot de passe. Veuillez reessayer");
-//			response.sendRedirect("Login");
+			response.sendRedirect("Login");
 		}
 		
 	}

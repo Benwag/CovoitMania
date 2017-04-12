@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"
 	import="java.util.*, com.cfranc.UserManger.model.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page errorPage="WEB-INF/views/error.jsp" %> 
+<%@ page errorPage="/error.jsp" %>
 <!DOCTYPE html>
 
 <html>
@@ -49,7 +49,7 @@
 		    				postcode:"${user.value.getPostCode()}",
 		    				score:"${user.value.getScore()}",
 		    				lat:"${user.value.getCoord()[0]}",
-		    				lng:"${user.value.getCoord()[1]}",
+		    				lng:"${user.value.getCoord()[1]}"
 		    				//dist:"${user.value.getPreference().getDetour()}"
 		    				
 		    },

@@ -234,7 +234,7 @@ public class UserDAO {
 		long detour = Long.parseLong(detourString);
 		preference.setDetour(detour);
 
-		user.setPreference(preference);
+		user.setPreferences(preference);
 		return user;
 	}
 

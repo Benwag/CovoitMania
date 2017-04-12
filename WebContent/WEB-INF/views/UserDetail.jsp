@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page errorPage="WEB-INF/views/error.jsp" %> 
+<%@ page errorPage="/error.jsp" %>
 
 
 <!DOCTYPE html>
@@ -25,14 +25,14 @@
 			<li class="list-group-item">Code postal: ${user.getPostCode()}</li>
 			<li class="list-group-item">Ville: ${user.getCity()}</li>
 			<li class="list-group-item">Conducteur:
-				${user.getPreference().getConducteur()}</li>
+				${user.getPreferences().getConducteur()}</li>
 			<li class="list-group-item">j'écoute de la musique:
-				${user.getPreference().getMusic()}</li>
+				${user.getPreferences().getMusic()}</li>
 			<li class="list-group-item">Je fume:
-				${user.getPreference().getFumeur()}</li>
+				${user.getPreferences().getFumeur()}</li>
 			<li class="list-group-item">Je parle:
-				${user.getPreference().getBlabla()}</li>
-			<li class="list-group-item">Je peux me déplacer d'environ <b>${user.getPreference().getDetour()}
+				${user.getPreferences().getBlabla()}</li>
+			<li class="list-group-item">Je peux me déplacer d'environ <b>${user.getPreferences().getDetour()}
 					km</b> par rapport à ma route / mon point de départ
 			</li>
 		</ul>

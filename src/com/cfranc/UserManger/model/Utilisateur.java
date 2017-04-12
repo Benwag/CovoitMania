@@ -21,10 +21,10 @@ public class Utilisateur implements Serializable {
 	private Preferences preference;
 
 	
-	public Preferences getPreference() {
+	public Preferences getPreferences() {
 		return preference;
 	}
-	public void setPreference(Preferences preference) {
+	public void setPreferences(Preferences preference) {
 		this.preference = preference;
 	}
 

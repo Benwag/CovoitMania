@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"
     import="java.util.*, com.cfranc.UserManger.model.*,javax.servlet.jsp.PageContext"
 %>
-<%@ page errorPage="WEB-INF/views/error.jsp" %> 
+<%@ page errorPage="/error.jsp" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -54,6 +54,7 @@
      
     </tbody>
   </table>
+  <a class="btn btn-default" href="UserAccount?user=${loggedUser.getId()}">Retour</a>
 </div>
 		<c:if test="${error != null}">${error}</c:if>
 		<c:if test="${sucess != null}">${sucess}</c:if>

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Utilisateur;
+import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 import dao.UserDAO;
 
@@ -41,7 +42,8 @@ public class AddUser extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("users") == null){	
-			ListeUtilisateur users = UserDAO.getStaticUsers();
+			UserDAO.getStaticUsers();
+			ListeUtilisateur users = UserDAO.findAll2();
 			session.setAttribute("users", users);
 			System.out.println("Session users created");
 		}
@@ -86,9 +88,24 @@ public class AddUser extends HttpServlet {
 				}
 			}
 			if (isAdressGood) {
-				long id = users.nextId();
-				Utilisateur user = UserDAO.addUser(firstname, lastname, age, email, address, city, postalCode, password, id);
-				response.sendRedirect("DetailUser?user=" + user.getId());
+
+				
+				Utilisateur user = new Utilisateur();
+				user.setFirstname(firstname);
+				user.setLastname(lastname);
+				user.setAge(age);
+				user.setEmail(email);
+				user.setAddress(address);
+				user.setCity(city);
+				user.setPassword(password);
+				user.setPostCode(postalCode);
+				user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
+				UserDAO.addUser(user);
+				
+				
+				session.setAttribute("users", UserDAO.findAll2());
+
+				response.sendRedirect("Login");
 			}
 		}
 	}

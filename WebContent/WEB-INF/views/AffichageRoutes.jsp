@@ -10,8 +10,13 @@
 <title>Users List</title>
 </head>
 <body onload="init();">
+
 <c:import url="/WEB-INF/views/Menu.jsp"/>
 	<div class="container jumbotron">
+
+<c:import url="/WEB-INF/views/Menu.jsp" />
+	<div>
+
 		<table>
 			<p>Entrez le detour maximal que vous pourriez faire:
 			<input type="number" value="1" id="detours">km</p>

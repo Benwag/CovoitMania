@@ -29,7 +29,17 @@
 			<li class="list-group-item">Je peux  me déplacer d'environ  <b>${user.getPreference().getDetour()} km</b> par rapport à ma route / mon point de départ</li>
 		</ul>
 		</div>
-		
+		<div>
+		<form action="DetailUser" method="post">
+	<div class="form-group">
+	<input type="hidden" name="user" value="${user.getId()}" />
+	<label for="Message">Message:</label> <textarea class="form-control" rows="4" cols="50" name="Message">Bonjour, je souhaiterais vous proposer un covoiturage.</textarea>
+	</div>
+	
+	
+<p><input type="submit" class="btn btn-default" value="envoyer"/></p>
+</form>
+		</div>
 
 		<a href="AllUsers">View Map</a> 
 		

@@ -138,6 +138,7 @@ public class UserDAO {
 	}
 
 	public static Utilisateur addUser(String firstname, String lastname, int age, String email, String address,
+
 			String city, int postalCode, String password, long id) {
 
 		Utilisateur user = new Utilisateur();

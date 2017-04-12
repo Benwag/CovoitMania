@@ -22,7 +22,7 @@ public class UserDAO {
 			bobby.setAge(36);
 			bobby.setEmail("robert@johnson.name");
 			bobby.setPassword("mdp");
-			bobby.setAddress("10 rue des bouchers");
+			bobby.setAddress("10 quai kléber");
 			bobby.setPostCode(67000);
 			bobby.setCity("Strasbourg");
 			bobby.setCoord(ConvertAdressCoord.getCoordFromAdress(bobby.getAddress() + " " + bobby.getCity()));
@@ -35,7 +35,7 @@ public class UserDAO {
 			johnny.setAge(42);
 			johnny.setEmail("johnny@johnson.name");
 			johnny.setPassword("mdp");
-			johnny.setAddress("20 rue des bouchers");
+			johnny.setAddress("20 rue de la fonderie");
 			johnny.setPostCode(67000);
 			johnny.setCity("Strasbourg");
 			johnny.setCoord(ConvertAdressCoord.getCoordFromAdress(johnny.getAddress() + " " + johnny.getCity()));
@@ -49,7 +49,7 @@ public class UserDAO {
 			steve.setAge(47);
 			steve.setEmail("steve@johnson.name");
 			steve.setPassword("mdp");
-			steve.setAddress("30 rue des bouchers");
+			steve.setAddress("30 rue du polygone");
 			steve.setPostCode(67000);
 			steve.setCity("Strasbourg");
 			steve.setCoord(ConvertAdressCoord.getCoordFromAdress(steve.getAddress() + " " + steve.getCity()));
@@ -97,6 +97,38 @@ public class UserDAO {
 			jacky.setCoord(ConvertAdressCoord.getCoordFromAdress(jacky.getAddress() + " " + jacky.getCity()));
 
 			users.put(jacky.getId(), jacky);
+
+			System.out.print(users.nextId());
+			
+			Utilisateur roger = new Utilisateur();
+			roger.setId(7);
+			roger.setFirstname("Roger");
+			roger.setLastname("Johnson");
+			roger.setAge(45);
+			roger.setEmail("roger@johnson.name");
+			roger.setPassword("mdp");
+			roger.setAddress("allée du printemps");
+			roger.setPostCode(67000);
+			roger.setCity("Strasbourg");
+			roger.setCoord(ConvertAdressCoord.getCoordFromAdress(roger.getAddress() + " " + roger.getCity()));
+
+			users.put(roger.getId(), roger);
+
+			System.out.print(users.nextId());
+			
+			Utilisateur raymond = new Utilisateur();
+			raymond.setId(8);
+			raymond.setFirstname("raymond");
+			raymond.setLastname("Johnson");
+			raymond.setAge(63);
+			raymond.setEmail("raymond@johnson.name");
+			raymond.setPassword("mdp");
+			raymond.setAddress("rue Paul Dopff");
+			raymond.setPostCode(67000);
+			raymond.setCity("Strasbourg");
+			raymond.setCoord(ConvertAdressCoord.getCoordFromAdress(raymond.getAddress() + " " + raymond.getCity()));
+
+			users.put(raymond.getId(), raymond);
 
 			System.out.print(users.nextId());
 

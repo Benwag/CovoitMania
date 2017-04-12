@@ -17,7 +17,9 @@
 	
 	<body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
-		<h1 class="warning">ARE YOU SURE YOU WANT TO DELETE THIS USER?</h1>
+<h1 class="container warning">ARE YOU SURE YOU WANT TO DELETE THIS USER?</h1>
+<div class="container jumbotron">
+		
 		<ul>
 			<li>First name : ${user.getFirstname()}</li>
 			<li>Last name : ${user.getLastname()}</li>
@@ -26,12 +28,13 @@
 			${user.getId()}
 		</ul>
 		<form action="DeleteUser" method="post" onsubmit="return verifyDelete();">
-			<input type="submit" value="YES I WANT TO DELETE HIM!" class="warning"/>
+			<input class="btn btn-danger" type="submit" value="YES I WANT TO DELETE HIM!" class="warning"/>
 			<input type="hidden" name="user" value="${user.getId()}" />
 		</form>
 		
-		<a href="AllUsers">View All Users</a> ||
-		<a href="EditUser?user=${user.getId()}">Edit</a>
+		<a class="btn btn-default" href="AllUsers">View All Users</a>
+		<a class="btn btn-default" href="EditUser?user=${user.getId()}">Edit</a>
+</div>		
 		<script type="text/javascript">
 			function verifyDelete() {
 				return confirm("Are you REALLY sure?");

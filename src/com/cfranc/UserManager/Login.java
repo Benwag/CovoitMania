@@ -56,15 +56,16 @@ public class Login extends HttpServlet {
 		for (Utilisateur user : users.values()){
 			if (email.equals(user.getEmail())){
 				if(user.getPassword().equals(password)){
-					((Utilisateur) session.getAttribute("loggedUser")).setId(user.getId());
-					RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/Logged.jsp");
+//					((Utilisateur) session.getAttribute("loggedUser")).setId(user.getId());
+					session.setAttribute("loggedUser", user);
+					RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/UserAccount.jsp");
 					dispatch.forward(request, response);
 				}
 				else 
 					break;}	
 			}
-			getServletContext().setAttribute("error", "Mauvaise combinaison email, mot de passe. Veuillez reessayer");
-			response.sendRedirect("Login");
+//			getServletContext().setAttribute("error", "Mauvaise combinaison email, mot de passe. Veuillez reessayer");
+//			response.sendRedirect("Login");
 		}
 		
 	}

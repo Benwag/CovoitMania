@@ -38,10 +38,8 @@ function initialiser() {
 		content: contentMarker,
 		position: latlng
 	});
-	
-	google.maps.event.addListener(marker, 'click', function() {
-		infoWindow.open(carte, marker);
-	});
+	infoWindow.open(carte, marker);
+
 
 
 for (var user in usersFields) {
@@ -63,12 +61,13 @@ for (var user in usersFields) {
 </head>
 <body onload="initialiser()">
 <c:import url="/WEB-INF/views/Menu.jsp" />
-<div id="carte container" style="width:100%; height: 75%"></div>
+
 <div class="jumbotron container">
         <h1>Covoiturez malin!</h1>
         <p class="texte">Avec CovoitMania, organisez et optimisez vos déplacements quotidiens jusqu'à votre lieu de travail en covoiturant avec vos collègues.</p>
         <p class="texte"> Sélectionnez vos préférences: musique, blabla, fumeur, renseignez votre adresse et hop! CovoitMania vous trouve le covoiturage parfait! </p>
         <p><a class="btn btn-lg btn-success" href="<c:url value="/AddUser"/>" role="button">S'inscrire</a></p>
+<div id="carte" style="width: 100%; height:400px !important;" class="container jumbotron"></div>
 </div>
 
 </body>

@@ -1,4 +1,6 @@
 /* Space out content a bit */
+
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -37,6 +39,7 @@ body {
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
+    height: 100%;
   }
 }
 .container-narrow > hr {
@@ -46,20 +49,28 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  border-radius: 15px;
+  border-radius: 15px !important;
+  height: 100%;
 }
 .jumbotron .texte {
 	text-align: justify;
 }
-.jumbotron .btn {
+.jumbotron .btn { 	
+  margin: 2.5px;	
   padding: 14px 24px;
   font-size: 21px;
 }
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+.jumbotron .btnlist {
+	width: 92%;
 }
-
+.jumbotron ul {
+	list-style-type: none;
+}
+.jumbotron ul li {
+	margin: 20px;
+	display: flex;
+	align-items: center;
+}
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;

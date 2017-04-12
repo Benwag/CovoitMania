@@ -12,7 +12,7 @@
   <script type="text/javascript">
   var LoggedId = ${loggedUser.getId()};
   function logout() {
-	document.getElementByClassName("varClass1").style.display = "none !important";
-	document.getElementByClassName("varClass2").style.display = "block !important";
+	document.getElementByClassName("connected").style.display = "none !important";
+	document.getElementByClassName("disconnected").style.display = "block !important";
   };
   </script>

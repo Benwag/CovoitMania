@@ -5,21 +5,21 @@
 <html>
 <head>
 <c:import url="/style/style.jsp"/>
-<title>User Edit</title>
+<title>Modifier le mot de passe</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/Menu.jsp" />
-<h2>Update password</h2>
+<h2 class="container">Changer le mot de passe</h2>
 <form action="EditPassword" onsubmit="return myFunction()" method="post">
 
-<div class="form-group">
+<div class="container jumbotron form-group">
 
-<label for="PreviousPassword">Previous Password</label> <input type="password" class="form-control" name="previousPassword"  value=""></div>
-<p><label for="NewPassword">New Password</label> <input id = "pass1" type="password"  class="form-control" name="newpassword" value=""></p>
-<p><label for="ConfirmPassword">Confirm new password</label> <input id="pass2" type="password" class="form-control"  name="confirmPassword" value=""></p>
+<p><label for="PreviousPassword">Précédent mot de passe:</label> <input type="password" class="form-control" name="previousPassword"  value=""></p>
+<p><label for="NewPassword">Nouveau mot de passe:</label> <input id = "pass1" type="password"  class="form-control" name="newpassword" value=""></p>
+<p><label for="ConfirmPassword">Confirmer le nouveau mot de passe:</label> <input id="pass2" type="password" class="form-control"  name="confirmPassword" value=""></p>
 
-<p><input type="submit" class="btn btn-default" value="Change Password"/></p>
-
+<p><input type="submit" class="btn btn-success" value="Enregistrer modification"/></p>
+</div>
 </form>
 
 <script>

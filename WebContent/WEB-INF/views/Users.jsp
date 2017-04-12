@@ -39,7 +39,7 @@ function initialiser() {
 		content: contentMarker,
 		position: latlng
 	});
-	
+	infoWindow.open(carte, marker);
 	google.maps.event.addListener(marker, 'click', function() {
 		infoWindow.open(carte, marker);
 	});
@@ -66,7 +66,7 @@ for (var user in usersFields) {
 	
 	<c:import url="/WEB-INF/views/Menu.jsp" />
 	<h2 class="container">Localisation des utilisateurs</h2>
-	<div class="container" id="carte" style="width:100%; height: 75%"></div>
+	<div id="carte" style="width: 100%; height:400px !important;" class="container jumbotron"></div>
 	<div class="container">
 	
 	
@@ -78,7 +78,7 @@ for (var user in usersFields) {
         <th>Lastname</th>
         <th>Firstname</th>
         <!-- <th>Email</th> -->
-        <th>Details</th>
+        <th class="${connected}">Details</th>
         <!-- <th>Edit</th>
         <th>Delete</th> -->
       </tr>
@@ -88,18 +88,13 @@ for (var user in usersFields) {
       <tr>
         <td>${user.value.getLastname()} </td>
         <td>${user.value.getFirstname()} </td>
-        <%-- <td>${user.value.getEmail()}</td> --%>
-        <td><a href="DetailUser?user=${user.key}">Details</a></td>
-        <%-- <td><a href="EditUser?user=${user.key}">Edit</a></td>
-        <td><a href="DeleteUser?user=${user.key}">Delete</a></td> --%>        
+        <td class="${connected}"><a href="DetailUser?user=${user.key}">Details</a></td>       
       </tr>
     </c:forEach>
      
     </tbody>
   </table>
 </div>
-		<c:if test="${error != null}">${error}</c:if>
-		<c:if test="${sucess != null}">${sucess}</c:if>
  		
 		
 		

@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import com.cfranc.UserManger.model.Utilisateur;
 
-/**
- * Servlet implementation class Logout
- */
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +22,7 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		((Utilisateur) session.getAttribute("loggedUser")).setId(0);
+		session.removeAttribute("loggedUser");
 		RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
 		dispatch.forward(request, response);
 	}

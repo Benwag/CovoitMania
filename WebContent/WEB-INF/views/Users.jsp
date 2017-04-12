@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-	import="java.util.*, com.cfranc.UserManger.model.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-=======
 <%@ page language="java" 
 	contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
@@ -11,7 +5,6 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page errorPage="WEB-INF/views/error.jsp" %>  
->>>>>>> refs/heads/DEV
 <!DOCTYPE html>
 
 <html>
@@ -79,36 +72,6 @@ for (var user in usersFields) {
 		<div id="carte" style="width: 100%; height: 400px !important;"
 			class="container jumbotron"></div>
 	</div>
-		<div class="container">
-
-
-			<h2>Liste des utilisateurs</h2>
-			<p>Voici la liste des ${users.size()} utilisateurs actuellement
-				inscrits</p>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="user" items="${users}" varStatus="stat">
-						<tr>
-							<td>${user.value.getLastname()}</td>
-							<td>${user.value.getFirstname()}</td>
-					
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table>
-		</div>
-
-
-
-
 </body>
 
 </html>

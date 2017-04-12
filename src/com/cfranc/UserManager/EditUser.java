@@ -46,7 +46,7 @@ public class EditUser extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Utilisateur user = (Utilisateur) request.getSession().getAttribute("user");
+		Utilisateur user = (Utilisateur) request.getSession().getAttribute("loggedUser");
 		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
@@ -58,8 +58,11 @@ public class EditUser extends HttpServlet {
 		
 		long userId = user.getId();
 		UserDAO.editUser(userId, firstname, lastname, age, email, address, postalCode, city);
-		
-		response.sendRedirect("AccountUser?user=" + user.getId());
+		HttpSession session = request.getSession();
+		session.setAttribute("loggedUser", user);
+		RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/UserAccount.jsp");
+		dispatch.forward(request, response);
+//		response.sendRedirect("AccountUser?user=" + user.getId());
 	}
 
 }

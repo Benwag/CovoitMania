@@ -26,7 +26,7 @@
       <tr>
       	<th>repondre</th>
         <th>Expediteur</th>
-        <<th>Destinataire</th> 
+        <th>Destinataire</th> 
         <th>Content</th>
       </tr>
     </thead>

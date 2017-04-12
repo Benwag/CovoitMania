@@ -42,8 +42,7 @@ public class EditPreference extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Utilisateur user = (Utilisateur) request.getSession().getAttribute("user");
-		
+		Utilisateur user = (Utilisateur) request.getSession().getAttribute("loggedUser");
 		
 		String conducteur = request.getParameter("conducteur");
 
@@ -53,8 +52,11 @@ public class EditPreference extends HttpServlet {
 		String detourString = request.getParameter("detour");
 		long userId = user.getId();
 		UserDAO.editPreferences(userId, conducteur, music, fumeur, blabla, detourString);
-		
-		response.sendRedirect("UserAccount?user=" + user.getId());
+		HttpSession session = request.getSession();
+		session.setAttribute("loggedUser", user);
+		RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/UserAccount.jsp");
+		dispatch.forward(request, response);
+//		response.sendRedirect("UserAccount?user=" + user.getId());
 		
 		
 		

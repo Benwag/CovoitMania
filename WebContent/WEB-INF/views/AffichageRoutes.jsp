@@ -13,20 +13,17 @@
 
 <c:import url="/WEB-INF/views/Menu.jsp"/>
 	<div class="container jumbotron">
-
-<c:import url="/WEB-INF/views/Menu.jsp" />
 	<div>
 
 		<table>
 			<p>Entrez le detour maximal que vous pourriez faire:
 			<input type="number" value="1" id="detours">km</p>
-			Rechercher des covoiturages à Proximité:
-			<input type="button" value="Rechercher" onclick="rechercher()">
+			<input class="btn btn-success" type="button" value="Rechercher" onclick="rechercher()">
 			</td>
 			</tr>
 		</table>
 	</div>
-	<div class="container jumbotron" id="divMap" style="align: center; width: 800px; height: 800px"></div>
+	<div class="container jumbotron" id="divMap" style="align: center; width: 800px; height: 600px"></div>
 	<div id="divCandidates" > 
 	
     </div>
@@ -56,7 +53,7 @@
 		    },
 		    </c:forEach>} 
 	var user=users["1"];
-	var adresseEntreprise="18 rue D'upsal 6700 Strasbourg";
+	var adresseEntreprise="5 Rue des Bouchers 6700 Strasbourg";
 	var adresseEmploye=user.adresse+" "+user.postcode+" "+user.city;
 	var listParcours;
 	const RADIUS=6371;

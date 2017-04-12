@@ -1,15 +1,14 @@
-<%@ page language="java" 
-	contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="java.util.*, com.cfranc.UserManger.model.*"
-%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+	import="java.util.*, com.cfranc.UserManger.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html>
-	<head>
-	<c:import url="/style/style.jsp"/>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBBqYxzbViJA31VFQiVNXUqQHKfSbISNZY"></script>
+<head>
+<c:import url="/style/style.jsp" />
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBBqYxzbViJA31VFQiVNXUqQHKfSbISNZY"></script>
 <script type="text/javascript">
 function initialiser() {
 	var latlng = new google.maps.LatLng(48.578480, 7.751519);
@@ -60,45 +59,50 @@ for (var user in usersFields) {
 
 }
 </script>
-		<title>Localisation des utilisateurs</title>
-	</head>
-	<body onload="initialiser()">
-	
+<title>Localisation des utilisateurs</title>
+</head>
+<body onload="initialiser()">
+
 	<c:import url="/WEB-INF/views/Menu.jsp" />
-	<h2 class="container">Localisation des utilisateurs</h2>
-	<div id="carte" style="width: 100%; height:400px !important;" class="container jumbotron"></div>
-	<div class="container">
-	
-	
-  <h2>Liste des utilisateurs</h2>
-  <p>Voici la liste des ${users.size()} utilisateurs actuellement inscrits</p>            
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Lastname</th>
-        <th>Firstname</th>
-        <!-- <th>Email</th> -->
-        <th class="${connected}">Details</th>
-        <!-- <th>Edit</th>
+	<div class="container jumbotron">
+		<h2 class="container">Localisation des utilisateurs</h2>
+		<div id="carte" style="width: 100%; height: 400px !important;"
+			class="container jumbotron"></div>
+	</div>
+		<div class="container">
+
+
+			<h2>Liste des utilisateurs</h2>
+			<p>Voici la liste des ${users.size()} utilisateurs actuellement
+				inscrits</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Lastname</th>
+						<th>Firstname</th>
+						<!-- <th>Email</th> -->
+						<th class="${connected}">Details</th>
+						<!-- <th>Edit</th>
         <th>Delete</th> -->
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="user" items="${users}" varStatus="stat">
-      <tr>
-        <td>${user.value.getLastname()} </td>
-        <td>${user.value.getFirstname()} </td>
-        <td class="${connected}"><a href="DetailUser?user=${user.key}">Details</a></td>       
-      </tr>
-    </c:forEach>
-     
-    </tbody>
-  </table>
-</div>
- 		
-		
-		
-		
-	</body>
-	
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="user" items="${users}" varStatus="stat">
+						<tr>
+							<td>${user.value.getLastname()}</td>
+							<td>${user.value.getFirstname()}</td>
+							<td class="${connected}"><a
+								href="DetailUser?user=${user.key}">Details</a></td>
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+</body>
+
 </html>

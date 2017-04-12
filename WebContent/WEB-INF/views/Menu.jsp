@@ -22,7 +22,7 @@
             <li class="${disconnected}" role="presentation"><a href="<c:url value="/AddUser"/>">Inscription</a></li>
 			<li class="${disconnected}" role="presentation"><a href="<c:url value="/Login"/>">Connexion</a></li>
 			<li class="${connected}" role="presentation"><a href="<c:url value="/AfficherRoutes"/>">Recherche</a></li>
-			<li class="${connected}" role="presentation"><a href="<c:url value="/Messagerie"/>">Messagerie</a></li>
+			<%-- <li class="${connected}" role="presentation"><a href="<c:url value="/Messagerie"/>">Messagerie</a></li> --%>
 			<li class="${connected}" role="presentation"><a href="<c:url value="/UserAccount?user=${loggedUser.getId()}"/>">Mon compte</a></li>
 			<li class="${connected}" role="presentation"><a href="<c:url value="/Logout"/>">Déconnexion</a></li>
           </ul>

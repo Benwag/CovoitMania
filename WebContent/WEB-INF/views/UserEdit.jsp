@@ -26,10 +26,5 @@
 </div>
 </form>
 
-<div class="container">
-<p class="container"><a href="EditPassword?user=${user.getId()}"><input  class="btn btn-default" value="Changer le mot de passe"/></a>
-<a href="DeleteUser?user=${user.getId()}"><input class="btn btn-danger" value="Supprimer mon compte"/></a>
-</p>
-</div>
 </body>
 </html>

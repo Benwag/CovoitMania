@@ -4,24 +4,18 @@
     import="java.util.*, com.cfranc.UserManger.model.*"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <!DOCTYPE html>
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<!-- <link rel="stylesheet" href="WEB-INF/styles/style.css"> -->
-		<title>Liste des messages</title>
+<c:import url="/style/style.jsp"/>	
+		<title>Ma Messagerie</title>
 	</head>
 	<body onload="initialiser()">
 	
 	<c:import url="/WEB-INF/views/Menu.jsp" />
-	<div class="container">
+	<div class="container jumbotron">
   <h2>Liste des Messages</h2>
   <p>Voici la liste des ${listeMessage.size()} messages dans votre boite au lettres</p>            
   <table class="table">

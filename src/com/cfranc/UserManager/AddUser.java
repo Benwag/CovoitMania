@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cfranc.UserManger.model.ListeUtilisateur;
+
 import com.cfranc.UserManger.model.Utilisateur;
+import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 import dao.UserDAO;
 
@@ -41,7 +42,8 @@ public class AddUser extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("users") == null){	
-			ListeUtilisateur users = UserDAO.getStaticUsers();
+			UserDAO.getStaticUsers();
+			Collection<Utilisateur> users = UserDAO.findAll();
 			session.setAttribute("users", users);
 			System.out.println("Session users created");
 		}
@@ -56,7 +58,7 @@ public class AddUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ListeUtilisateur users = (ListeUtilisateur) session.getAttribute("users");
+		Collection<Utilisateur> users = (Collection<Utilisateur>) session.getAttribute("users");
 
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
@@ -74,7 +76,7 @@ public class AddUser extends HttpServlet {
 			int postalCode = Integer.parseInt(request.getParameter("postalCode"));
 			
 			
-			Collection<Utilisateur> userList = users.values();
+			Collection<Utilisateur> userList = users;
 			boolean isAdressGood = true;
 			for (Utilisateur utilisateur : userList) {
 
@@ -86,8 +88,18 @@ public class AddUser extends HttpServlet {
 				}
 			}
 			if (isAdressGood) {
-
-				Utilisateur user = UserDAO.addUser(firstname, lastname, age, email, address, city, postalCode, password);
+				
+				Utilisateur user = new Utilisateur();
+				user.setFirstname(firstname);
+				user.setLastname(lastname);
+				user.setAge(age);
+				user.setEmail(email);
+				user.setAddress(address);
+				user.setCity(city);
+				user.setPassword(password);
+				user.setPostCode(postalCode);
+				user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
+				UserDAO.addUser(user);
 				response.sendRedirect("DetailUser?user=" + user.getId());
 			}
 		}

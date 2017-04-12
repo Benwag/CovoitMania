@@ -35,14 +35,21 @@ public class UserDAO {
 		return instance;
 	}
 
-	public List<Utilisateur> findAll() {
+	public static List<Utilisateur> findAll() {
 
-		Query q = em.createQuery("SELECT t FROM Todo t");
+		Query q = em.createQuery("SELECT t FROM Utilisateur t");
 		List<Utilisateur> ListeUtilisateur = q.getResultList();
 		return ListeUtilisateur;
 	}
+	
+	public static Utilisateur getUtilisateur(long id){
+		Query q = em.createQuery("SELECT t FROM Utilisateur t WHERE ID =" + id);
+		Utilisateur user = (Utilisateur) q.getSingleResult();
+		return user;
+	}
+	
 
-	public Utilisateur getStaticUsers() {
+	public static void getStaticUsers() {
 
 		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
 		Preferences preference2 = new Preferences("oui", "oui", "non", "beaucoup", 2);
@@ -137,24 +144,11 @@ public class UserDAO {
 		em.persist(jacky);
 		em.getTransaction().commit();
 
-		return jacky;
-
 	}
 
-	public static Utilisateur addUser(String firstname, String lastname, int age, String email, String address,
-			String city, int postalCode, String password) {
+	public static Utilisateur addUser(Utilisateur user) {
 		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
 		em.getTransaction().begin();
-		Utilisateur user = new Utilisateur();
-		user.setFirstname(firstname);
-		user.setLastname(lastname);
-		user.setAge(age);
-		user.setEmail(email);
-		user.setAddress(address);
-		user.setCity(city);
-		user.setPassword(password);
-		user.setPostCode(postalCode);
-		user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
 		user.setPreferences(preference);
 		em.persist(user);
 		em.getTransaction().commit();
@@ -164,7 +158,7 @@ public class UserDAO {
 	public static Utilisateur editUser(Utilisateur user) {
 
 		em.getTransaction().begin();
-		em.persist(user);
+		em.merge(user);
 		em.getTransaction().commit();
 
 		return user;
@@ -216,5 +210,8 @@ public class UserDAO {
 		user.setPreferences(preference);
 		return user;
 	}
+
+
+	
 
 }

@@ -30,9 +30,8 @@ public class EditPassword extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		HashMap<Long, Utilisateur> users = (HashMap<Long, Utilisateur>) session.getAttribute("users");
-		long id = Long.parseLong((String) request.getParameter("user"));
-		Utilisateur user = users.get(id);
+		long id = Long.parseLong((String) request.getParameter("user"));	
+		Utilisateur user = UserDAO.getUtilisateur(id);
 		session.setAttribute("user", user);
 
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/PasswordEdit.jsp");

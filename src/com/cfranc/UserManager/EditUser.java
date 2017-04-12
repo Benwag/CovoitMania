@@ -1,6 +1,7 @@
 package com.cfranc.UserManager;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -33,9 +34,9 @@ public class EditUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HashMap<Long, Utilisateur> users = (HashMap<Long, Utilisateur>)session.getAttribute("users");	
+		
 		long id = Long.parseLong((String) request.getParameter("user"));	
-		Utilisateur user = users.get(id);
+		Utilisateur user = UserDAO.getUtilisateur(id);
 		session.setAttribute("user", user);
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/UserEdit.jsp");

@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
 				else 
 					break;}	
 			}
-			getServletContext().setAttribute("error", "Mauvaise combinaison email, mot de passe. Veuillez reessayer");
+			//getServletContext().setAttribute("error", "Mauvaise combinaison email, mot de passe. Veuillez reessayer");
 			response.sendRedirect("Login");
 		}
 		

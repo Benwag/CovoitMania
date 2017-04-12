@@ -4,6 +4,7 @@
     import="java.util.*, com.cfranc.UserManger.model.*"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page errorPage="WEB-INF/views/error.jsp" %>  
 <!DOCTYPE html>
 
 <html>

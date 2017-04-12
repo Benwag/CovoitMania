@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cfranc.UserManger.model.ListeMessage;
+import com.cfranc.UserManger.model.ListeUtilisateur;
 import com.cfranc.UserManger.model.Message;
 import com.cfranc.UserManger.model.Utilisateur;
 
@@ -52,9 +53,9 @@ public class DetailUser extends HttpServlet {
 		String messageContent=request.getParameter("Message");
 		ListeMessage listeMessage=new ListeMessage();
 		if (session.getAttribute("listeMessage")!=null){listeMessage=(ListeMessage)session.getAttribute("listeMessage");}
-
+		ListeUtilisateur users=(ListeUtilisateur)session.getAttribute("users");
 		Long nextId=listeMessage.nextId();
-		Message message=new Message(expediteurId, destinataireId,messageContent,nextId);
+		Message message=new Message(expediteurId, destinataireId,messageContent, users.get(Long.parseLong(expediteurId)).getFirstname(),users.get(Long.parseLong(destinataireId)).getFirstname(),nextId);
 		listeMessage.put(nextId, message);
 		session.setAttribute("listeMessage", listeMessage);
 		response.sendRedirect("AfficherRoutes");

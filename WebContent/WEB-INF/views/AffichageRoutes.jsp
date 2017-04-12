@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"
 	import="java.util.*, com.cfranc.UserManger.model.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page errorPage="WEB-INF/views/error.jsp" %> 
+ <%@ page errorPage="error.jsp" %>  
 <!DOCTYPE html>
 
 <html>
@@ -50,7 +50,7 @@
 		    				score:"${user.value.getScore()}",
 		    				lat:"${user.value.getCoord()[0]}",
 		    				lng:"${user.value.getCoord()[1]}",
-		    				//dist:"${user.value.getPreference().getDetour()}"
+		    				dist:"${user.value.getPreferences().getDetour()}"
 		    				
 		    },
 		    </c:forEach>} 
@@ -176,7 +176,7 @@
 				  if (utilisateur!=user){
 					  var latCandidate=utilisateur.lat;
 				  	  var lngCandidate=utilisateur.lng;
-				  	  //var diam=user.detourMaximum+utilisateur.distanceParcourableMax:
+				  	  var diam=detour+utilisateur.dist;
 				  	  var diam=detour;
 				  	  for (var point of listParcours){
 				  		  if (calculDistanceEntreDeuxCoordonnees(latCandidate,lngCandidate,point[0],point[1])<diam){

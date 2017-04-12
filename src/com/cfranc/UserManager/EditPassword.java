@@ -51,7 +51,7 @@ public class EditPassword extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		ListeUtilisateur users = (ListeUtilisateur) session.getAttribute("users");
-		Utilisateur user = (Utilisateur) request.getSession().getAttribute("user");
+		Utilisateur user = (Utilisateur) request.getSession().getAttribute("loggedUser");
 
 		String previousPassword = request.getParameter("previousPassword").trim();
 		String newPassword = request.getParameter("newPassword");
@@ -63,13 +63,14 @@ public class EditPassword extends HttpServlet {
 		if (isPasswordGood) {
 			user.setPassword(newPassword);
 			user = UserDAO.editPassword(user);
-			session.setAttribute("users", UserDAO.findAll2());
-			response.sendRedirect("DetailUser?user=" + user.getId());
+			session.setAttribute("loggedUser", user);
+			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/UserAccount.jsp");
+			dispatch.forward(request, response);
 			
 		}
 		else {
 
-			response.sendRedirect("UserAccount?loggedUser=" + user.getId());
+			response.sendRedirect("EditPassword?user=" + user.getId());
 		}
 
 	}

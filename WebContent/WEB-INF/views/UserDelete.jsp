@@ -37,7 +37,7 @@
 </div>		
 		<script type="text/javascript">
 			function verifyDelete() {
-				return confirm("Are you REALLY sure?");
+				return confirm("Etes-vous certain de ne pas regretter votre choix?");
 			}
 		</script>
 	</body>

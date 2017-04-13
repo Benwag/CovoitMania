@@ -21,7 +21,7 @@
 
 	<div class="container jumbotron">
   <h2>Liste des Messages</h2>
-  <p>Voici la liste des ${listeMessage.size()} messages dans votre boite au lettres</p>            
+  <%-- <p>Voici la liste des ${listeMessage.size()} messages dans votre boite au lettres</p> --%>            
 
   <table class="table">
     <thead>
@@ -42,14 +42,14 @@
         <td>${message.value.getMessageContent()} </td>    
       </tr>
       </c:if>
-    </c:forEach>
-    <c:forEach var="message" items="${listeMessage}" varStatus="stat"> 
+    <%-- </c:forEach>
+    <c:forEach var="message" items="${listeMessage}" varStatus="stat">  --%>
    <c:if test="${message.value.getDestinataireID() == loggedUser.getId()}">
-      <tr>
-      <td><a href="DetailUser?user=${message.value.getExpediteurID()}">Repondre</a></td>
-		<td>${message.value.getExpediteurFirstname()} </td>
+     <tr>
+      	<td><a href="DetailUser?user=${message.value.getDestinataireID()}">Répondre</a></td>
+        <td>${message.value.getExpediteurFirstname()} </td>
         <td>${message.value.getDestinataireFirstname()} </td>
-        <td>${message.value.getMessageContent()} </td>     
+        <td>${message.value.getMessageContent()} </td>    
       </tr>
       </c:if>
     </c:forEach>

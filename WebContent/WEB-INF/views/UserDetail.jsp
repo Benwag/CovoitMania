@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page errorPage="/error.jsp" %>
+<%@ page errorPage="error.jsp" %> 
 
 
 <!DOCTYPE html>
@@ -35,6 +35,7 @@
 			<li class="list-group-item">Je peux me déplacer d'environ <b>${user.getPreferences().getDetour()}
 					km</b> par rapport à ma route / mon point de départ
 			</li>
+
 		</ul>
 	</div>
 	<div class="container">

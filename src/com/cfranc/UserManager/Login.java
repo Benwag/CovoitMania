@@ -35,7 +35,8 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		if(session.getAttribute("users") == null) {
-			ListeUtilisateur users = UserDAO.getStaticUsers();
+			UserDAO.getStaticUsers();
+			ListeUtilisateur users = UserDAO.findAll2(); 
 			session.setAttribute("users", users);
 			System.out.println("Session users created");
 		}

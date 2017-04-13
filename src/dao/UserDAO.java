@@ -1,6 +1,12 @@
 package dao;
 
-import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.cfranc.UserManager.ConvertAdressCoord;
 import com.cfranc.UserManger.model.ListeUtilisateur;
@@ -9,233 +15,203 @@ import com.cfranc.UserManger.model.Utilisateur;
 
 public class UserDAO {
 
-	static ListeUtilisateur users = null;
+	@PersistenceContext
+	private static EntityManager em;
+	private static UserDAO instance=null;
+
+	private UserDAO(EntityManager em) {
+		super();
+		UserDAO.em = em;
+	}
+
+
+	public static UserDAO getInstance() {
+		if (instance == null) {
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("CovoitMania");
+			em = factory.createEntityManager();
+			instance = new UserDAO(em);
+		}
+		return instance;
+	}
+
+//	public static List<Utilisateur> findAll() {
+//		Query q = em.createQuery("SELECT t FROM Utilisateur t");
+//		List<Utilisateur> listeUtilisateur = q.getResultList();
+//	
+//		return listeUtilisateur;
+//	}
+	
+
+	public static ListeUtilisateur findAll2() {
+		ListeUtilisateur users = new ListeUtilisateur();
+		Query q = em.createQuery("SELECT t FROM Utilisateur t");
+		List<Utilisateur> listeUtilisateur = q.getResultList();
+		for(Utilisateur user : listeUtilisateur){
+			users.put(user.getId(), user);
+		}
+		return users;
+	}
+	
+//	public static Utilisateur getUtilisateur(long id){
+//		Query q = em.createQuery("SELECT t FROM Utilisateur t WHERE ID =" + id);
+//		Utilisateur user = (Utilisateur) q.getSingleResult();
+//		return user;
+//	}
+	
 
 	public static ListeUtilisateur getStaticUsers() {
 
-		if (users == null) {
-			users = new ListeUtilisateur();
-			Utilisateur bobby = new Utilisateur();
-			bobby.setId(1);
-			bobby.setFirstname("Bobby");
-			bobby.setLastname("Johnson");
-			bobby.setAge(36);
-			bobby.setEmail("robert@johnson.name");
-			bobby.setPassword("mdp");
-			bobby.setAddress("10 quai kléber");
-			bobby.setPostCode(67000);
-			bobby.setCity("Strasbourg");
-			bobby.setCoord(ConvertAdressCoord.getCoordFromAdress(bobby.getAddress() + " " + bobby.getCity()));
-			users.put(bobby.getId(), bobby);
 
-			Utilisateur johnny = new Utilisateur();
-			johnny.setId(2);
-			johnny.setFirstname("Johnny");
-			johnny.setLastname("Johnson");
-			johnny.setAge(42);
-			johnny.setEmail("johnny@johnson.name");
-			johnny.setPassword("mdp");
-			johnny.setAddress("20 rue de la fonderie");
-			johnny.setPostCode(67000);
-			johnny.setCity("Strasbourg");
-			johnny.setCoord(ConvertAdressCoord.getCoordFromAdress(johnny.getAddress() + " " + johnny.getCity()));
+		
+		
+		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
+		Preferences preference2 = new Preferences("oui", "oui", "oui", "beaucoup", 2);
+		
+		UserDAO.getInstance();
 
-			users.put(johnny.getId(), johnny);
+		
+		em.getTransaction().begin();
+		Utilisateur bobby = new Utilisateur();
+		bobby.setFirstname("Bobby");
+		bobby.setLastname("Johnson");
+		bobby.setAge(36);
+		bobby.setEmail("robert@johnson.name");
+		bobby.setPassword("mdp");
+		bobby.setAddress("10 rue des bouchers");
+		bobby.setPostCode(67000);
+		bobby.setCity("Strasbourg");
+		bobby.setCoord(ConvertAdressCoord.getCoordFromAdress(bobby.getAddress() + " " + bobby.getCity()));
+		bobby.setPreferences(preference2);
+		em.persist(bobby);
+		em.getTransaction().commit();
 
-			Utilisateur steve = new Utilisateur();
-			steve.setId(3);
-			steve.setFirstname("Steve");
-			steve.setLastname("Johnson");
-			steve.setAge(47);
-			steve.setEmail("steve@johnson.name");
-			steve.setPassword("mdp");
-			steve.setAddress("30 rue du polygone");
-			steve.setPostCode(67000);
-			steve.setCity("Strasbourg");
-			steve.setCoord(ConvertAdressCoord.getCoordFromAdress(steve.getAddress() + " " + steve.getCity()));
 
-			users.put(steve.getId(), steve);
+		em.getTransaction().begin();
+		Utilisateur johnny = new Utilisateur();
+		johnny.setFirstname("Johnny");
+		johnny.setLastname("Johnson");
+		johnny.setAge(42);
+		johnny.setEmail("johnny@johnson.name");
+		johnny.setPassword("mdp");
+		johnny.setAddress("20 rue des bouchers");
+		johnny.setPostCode(67000);
+		johnny.setCity("Strasbourg");
+		johnny.setCoord(ConvertAdressCoord.getCoordFromAdress(johnny.getAddress() + " " + johnny.getCity()));
+		johnny.setPreferences(preference);
+		em.persist(johnny);
+		em.getTransaction().commit();
 
-			Utilisateur bill = new Utilisateur();
-			bill.setId(4);
-			bill.setFirstname("Bill");
-			bill.setLastname("Johnson");
-			bill.setAge(59);
-			bill.setEmail("bill@johnson.name");
-			bill.setPassword("mdp");
-			bill.setAddress("35 rue des bouchers");
-			bill.setPostCode(67000);
-			bill.setCity("Strasbourg");
-			bill.setCoord(ConvertAdressCoord.getCoordFromAdress(bill.getAddress() + " " + bill.getCity()));
 
-			users.put(bill.getId(), bill);
-			
-			Utilisateur jago = new Utilisateur();
-			jago.setId(5);
-			jago.setFirstname("jago");
-			jago.setLastname("Johnson");
-			jago.setAge(59);
-			jago.setEmail("jago@johnson.name");
-			jago.setPassword("mdp");
-			jago.setAddress("rue de Grenoble");
-			jago.setPostCode(67000);
-			jago.setCity("Strasbourg");
-			jago.setCoord(ConvertAdressCoord.getCoordFromAdress(jago.getAddress() + " " + jago.getCity()));
+		em.getTransaction().begin();
+		Utilisateur steve = new Utilisateur();
+		steve.setFirstname("Steve");
+		steve.setLastname("Johnson");
+		steve.setAge(47);
+		steve.setEmail("steve@johnson.name");
+		steve.setPassword("mdp");
+		steve.setAddress("30 rue des bouchers");
+		steve.setPostCode(67000);
+		steve.setCity("Strasbourg");
+		steve.setCoord(ConvertAdressCoord.getCoordFromAdress(steve.getAddress() + " " + steve.getCity()));
+		steve.setPreferences(preference2);
+		em.persist(steve);
+		em.getTransaction().commit();
 
-			users.put(jago.getId(), jago);
-			
-			Utilisateur jacky = new Utilisateur();
-			jacky.setId(6);
-			jacky.setFirstname("jacky");
-			jacky.setLastname("Johnson");
-			jacky.setAge(59);
-			jacky.setEmail("jackyl@johnson.name");
-			jacky.setPassword("mdp");
-			jacky.setAddress("rue de Hagenau");
-			jacky.setPostCode(67000);
-			jacky.setCity("Strasbourg");
-			jacky.setCoord(ConvertAdressCoord.getCoordFromAdress(jacky.getAddress() + " " + jacky.getCity()));
 
-			users.put(jacky.getId(), jacky);
+		em.getTransaction().begin();
+		Utilisateur bill = new Utilisateur();
+		bill.setFirstname("Bill");
+		bill.setLastname("Johnson");
+		bill.setAge(59);
+		bill.setEmail("bill@johnson.name");
+		bill.setPassword("mdp");
+		bill.setAddress("35 rue des bouchers");
+		bill.setPostCode(67000);
+		bill.setCity("Strasbourg");
+		bill.setCoord(ConvertAdressCoord.getCoordFromAdress(bill.getAddress() + " " + bill.getCity()));
+		bill.setPreferences(preference);
+		em.persist(bill);
+		em.getTransaction().commit();
 
-			System.out.print(users.nextId());
-			
-			Utilisateur roger = new Utilisateur();
-			roger.setId(7);
-			roger.setFirstname("Roger");
-			roger.setLastname("Johnson");
-			roger.setAge(45);
-			roger.setEmail("roger@johnson.name");
-			roger.setPassword("mdp");
-			roger.setAddress("allée du printemps");
-			roger.setPostCode(67000);
-			roger.setCity("Strasbourg");
-			roger.setCoord(ConvertAdressCoord.getCoordFromAdress(roger.getAddress() + " " + roger.getCity()));
+		em.getTransaction().begin();
+		Utilisateur jago = new Utilisateur();
+		jago.setFirstname("jago");
+		jago.setLastname("Johnson");
+		jago.setAge(59);
+		jago.setEmail("jago@johnson.name");
+		jago.setPassword("mdp");
+		jago.setAddress("rue de Grenoble");
+		jago.setPostCode(67000);
+		jago.setCity("Strasbourg");
+		jago.setCoord(ConvertAdressCoord.getCoordFromAdress(jago.getAddress() + " " + jago.getCity()));
+		jago.setPreferences(preference);
+		em.persist(jago);
+		em.getTransaction().commit();
 
-			users.put(roger.getId(), roger);
+		em.getTransaction().begin();
+		Utilisateur jacky = new Utilisateur();
+		jacky.setFirstname("jacky");
+		jacky.setLastname("Johnson");
+		jacky.setAge(59);
+		jacky.setEmail("jackyl@johnson.name");
+		jacky.setPassword("mdp");
+		jacky.setAddress("rue de Hagenau");
+		jacky.setPostCode(67000);
+		jacky.setCity("Strasbourg");
+		jacky.setCoord(ConvertAdressCoord.getCoordFromAdress(jacky.getAddress() + " " + jacky.getCity()));
+		jacky.setPreferences(preference);
+		em.persist(jacky);
+		em.getTransaction().commit();
 
-			System.out.print(users.nextId());
-			
-			Utilisateur raymond = new Utilisateur();
-			raymond.setId(8);
-			raymond.setFirstname("raymond");
-			raymond.setLastname("Johnson");
-			raymond.setAge(63);
-			raymond.setEmail("raymond@johnson.name");
-			raymond.setPassword("mdp");
-			raymond.setAddress("rue Paul Dopff");
-			raymond.setPostCode(67000);
-			raymond.setCity("Strasbourg");
-			raymond.setCoord(ConvertAdressCoord.getCoordFromAdress(raymond.getAddress() + " " + raymond.getCity()));
 
-			users.put(raymond.getId(), raymond);
+		ListeUtilisateur users = UserDAO.findAll2();
 
-			System.out.print(users.nextId());
-
-		}
 		return users;
-
 	}
 
-	public static Utilisateur addUser(String firstname, String lastname, int age, String email, String address,
 
-			String city, int postalCode, String password, long id) {
-
-		Utilisateur user = new Utilisateur();
-		user.setFirstname(firstname);
-		user.setLastname(lastname);
-		user.setAge(age);
-		user.setEmail(email);
-		user.setAddress(address);
-		user.setCity(city);
-		user.setPassword(password);
-		user.setPostCode(postalCode);
-		user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
-		user.setId(id);
-		users.put(user.getId(), user);
-		return user;
-	}
-
-	public static Utilisateur editUser(long userId, String firstname, String lastname, String ageString, String email,
-			String address, String postalCodeString, String city) {
-		Utilisateur user = users.get(userId);
-
-		if (firstname != "") {
-			user.setFirstname(firstname);
-		}
-		if (lastname != "") {
-			user.setLastname(lastname);
-		}
-		if (ageString != "") {
-			int age = Integer.parseInt(ageString);
-			user.setAge(age);
-		}
-		if (email != "") {
-			user.setEmail(email);
-		}
-		if (address != "") {
-			user.setAddress(address);
-		}
-		if (postalCodeString != "") {
-			int postalCode = Integer.parseInt(postalCodeString);
-			user.setPostCode(postalCode);
-		}
-		if (city != "") {
-			user.setCity(city);
-		}
-
-		if (address != "" || city != "") {
-			user.setCoord(ConvertAdressCoord.getCoordFromAdress(address + " " + city));
-		}
-
-		return user;
-
-	}
-
-	public static Utilisateur editPassword(long userId, String previousPassword, String newPassword) {
-		Utilisateur user = users.get(userId);
-
-		user.setPassword(newPassword);
-		return user;
-
-	}
-
-	public static Utilisateur editPreferences(long userId, String conducteur, String music, String fumeur,
-			String blabla, String detourString) {
-		Utilisateur user = users.get(userId);
-
-		Preferences preference = new Preferences();
-
-		if ("oui".equals(conducteur)) {
-			preference.setConducteur("oui");
-		} else if ("non".equals(conducteur)) {
-			preference.setConducteur("non");
-		}
-		preference.setConducteur(conducteur);
-
-		if ("oui".equals(music)) {
-			preference.setMusic("oui");
-		} else if ("non".equals(music)) {
-			preference.setMusic("non");
-		}
-
-		if ("oui".equals(fumeur)) {
-			preference.setFumeur("oui");
-		} else if ("non".equals(fumeur)) {
-			preference.setFumeur("non");
-		}
-
-		if ("oui".equals(blabla)) {
-			preference.setBlabla("beaucoup");
-		} else if ("non".equals(blabla)) {
-			preference.setBlabla("pas du tout");
-		}
-
-		long detour = Long.parseLong(detourString);
-		preference.setDetour(detour);
-
+	public static Utilisateur addUser(Utilisateur user) {
+		
+		UserDAO.getInstance();
+		Preferences preference = new Preferences("non", "non", "non", "pas du tout", 0);
+		em.getTransaction().begin();
 		user.setPreferences(preference);
+		
+		em.persist(user);
+		em.getTransaction().commit();
+
 		return user;
 	}
+
+	public static Utilisateur editUser(Utilisateur user) {
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(user);
+		em.getTransaction().commit();
+
+		return user;
+
+	}
+
+	public static Utilisateur editPassword(Utilisateur user) {
+
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(user);
+		em.getTransaction().commit();
+		return user;
+
+	}
+
+	public static Utilisateur editPreferences(Utilisateur user) {
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(user);
+		em.getTransaction().commit();	
+		return user;
+	}
+
+
+	
 
 }
